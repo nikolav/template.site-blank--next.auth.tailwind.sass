@@ -20,7 +20,7 @@ export default function Index() {
       {auth ? (
         <button
           className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
-          onClick={() => signOut({ redirect: false, callbackUrl: "/a-page" })}
+          onClick={() => signOut({ redirect: false, callbackUrl: "/" })}
         >
           logout
         </button>
@@ -38,6 +38,24 @@ export default function Index() {
             onClick={() => signIn("twitter")}
           >
             tw.login
+          </button>
+          <button
+            className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
+            onClick={() => signIn("facebook", { callbackUrl: "/" })}
+          >
+            fb.login
+          </button>
+          <button
+            className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
+            onClick={() =>
+              signIn("credentials", {
+                email: "k@example.com",
+                password: "122333",
+                callbackUrl: "/",
+              })
+            }
+          >
+            creds.login
           </button>
         </>
       )}
