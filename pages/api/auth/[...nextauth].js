@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 // import GoogleProvider from "next-auth/providers/google"
 import GithubProvider from "next-auth/providers/github";
 // import FacebookProvider from "next-auth/providers/facebook"
-// import TwitterProvider from "next-auth/providers/twitter"
+import TwitterProvider from "next-auth/providers/twitter";
 // import Auth0Provider from "next-auth/providers/auth0"
 // import AppleProvider from "next-auth/providers/apple"
 // import EmailProvider from "next-auth/providers/email"
@@ -41,10 +41,10 @@ export default NextAuth({
     //   clientId: process.env.GOOGLE_ID,
     //   clientSecret: process.env.GOOGLE_SECRET,
     // }),
-    // TwitterProvider({
-    //   clientId: process.env.TWITTER_ID,
-    //   clientSecret: process.env.TWITTER_SECRET,
-    // }),
+    TwitterProvider({
+      clientId: process.env.TWITTER_CLIENT_ID,
+      clientSecret: process.env.TWITTER_CLIENT_SECRET,
+    }),
     // Auth0Provider({
     //   clientId: process.env.AUTH0_ID,
     //   clientSecret: process.env.AUTH0_SECRET,
@@ -54,14 +54,32 @@ export default NextAuth({
   // theme: {
   //   colorScheme: "light",
   // },
+  //
+  // // https://next-auth.js.org/getting-started/example#using-nextauthjs-callbacks
   // callbacks: {
-  //   async jwt({ token }) {
-  //     token.userRole = "admin";
+  //   async jwt({ token, account }) {
+  //     // Persist the OAuth access_token to the token right after signin
+  //     if (account) {
+  //       token.accessToken = account.access_token;
+  //     }
   //     return token;
+  //   },
+  //   async session({ session, token, user }) {
+  //     // Send properties to the client, like an access_token from a provider.
+  //     session.accessToken = token.accessToken;
+  //     return session;
   //   },
   // },
   // pages: {
   //   signIn: "/auth/login",
   // },
-  // database: process.env.DATABASE_URL,
+  // database: {
+  //   type: 'process.env.DATABASE_TYPE',
+  //   host: 'process.env.DATABASE_HOST',
+  //   port: 'process.env.DATABASE_PORT',
+  //   username: 'process.env.DATABASE_USERNAME',
+  //   password: 'process.env.DATABASE_PASSWORD',
+  //   database: 'process.env.DATABASE_NAME',
+  //   synchronize: true,
+  // },
 });

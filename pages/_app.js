@@ -45,7 +45,11 @@ function MyApp({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SessionProvider session={session} refetchInterval={0}>
+      <SessionProvider
+        session={session}
+        refetchInterval={0}
+        refetchOnWindowFocus={true}
+      >
         <AnimatePresence initial={false}>
           <motion.div
             key={route}
@@ -63,4 +67,3 @@ function MyApp({
 }
 
 export default MyApp;
-
