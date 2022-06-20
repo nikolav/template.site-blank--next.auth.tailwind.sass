@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import modcss from "../styles/Index.module.css";
 
@@ -9,10 +10,11 @@ export default function Index() {
       <Head>
         <title>next-auth</title>
         <meta name="description" content="NextApp" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="prose">
+        <Link href="/page2">page-2</Link>
         <h1 className="text-slate-500 uppercase font-bold">hello</h1>
+        
       </div>
       {auth ? (
         <button
@@ -24,7 +26,8 @@ export default function Index() {
       ) : (
         <button
           className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
-          onClick={() => signIn("github")}
+          // onClick={() => signIn("github")}
+          onClick={signIn}
         >
           gh.login
         </button>

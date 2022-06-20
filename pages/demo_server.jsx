@@ -34,9 +34,17 @@ export default function ServerIndex() {
 
 // Export the `session` prop to use sessions with Server Side Rendering
 export async function getServerSideProps(context) {
-  return {
-    props: {
-      session: await getSession(context),
-    },
-  };
+  const session = await getSession(context);
+  return !session
+    ? {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      }
+    : {
+        props: {
+          session,
+        },
+      };
 }
