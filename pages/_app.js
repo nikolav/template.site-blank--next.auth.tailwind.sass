@@ -1,11 +1,13 @@
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
-import "bootstrap";
+
+if ("undefined" !== typeof window)
+  require("bootstrap");
 //
 import "../styles/reset.css";
 import "../styles/build.css";
-// 
+//
 import "../styles/bootstrap.css";
 import "../styles/globals.css";
 //

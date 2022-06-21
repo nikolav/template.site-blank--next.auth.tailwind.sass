@@ -4,12 +4,10 @@ import Link from "next/link";
 const Page2 = () => {
   return (
     <div>
-      <h1>
-        <Link href="/">
-          <a className="underline text-indigo-600">index</a>
-        </Link>
-      </h1>
-      <h4>page-2</h4>
+      <Link href="/">
+        <a className="underline text-indigo-600">index</a>
+      </Link>
+      <h4 className="text-slate-500 uppercase font-bold">page-2</h4>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
         accusamus, voluptas distinctio itaque id harum impedit nostrum

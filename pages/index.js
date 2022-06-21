@@ -13,12 +13,10 @@ export default function Index() {
         <title>next-auth</title>
         <meta name="description" content="NextApp" />
       </Head>
-      <div className="prose">
-        <Link href="/page2">
-          <a className="underline text-indigo-600">page-2</a>
-        </Link>
-        <h1 className="text-slate-500 uppercase font-bold">welcome</h1>
-      </div>
+      <Link href="/page2">
+        <a className="underline text-indigo-600">page-2</a>
+      </Link>
+      <h4 className="text-slate-500 uppercase font-bold">welcome</h4>
       {auth ? (
         <button
           className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
