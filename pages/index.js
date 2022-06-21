@@ -28,7 +28,7 @@ export default function Index() {
         </button>
       ) : (
         <>
-{/*           
+          {/*           
           <button
             className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
             onClick={() =>
@@ -45,24 +45,30 @@ export default function Index() {
           */}
           <button
             className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
-            onClick={() => signIn("github", { callbackUrl: "/" })}
+            onClick={() => signIn("github")}
             // onClick={signIn}
           >
             gh.login
           </button>
           <button
             className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
-            onClick={() => signIn("twitter", { callbackUrl: "/" })}
+            onClick={() => signIn("twitter")}
           >
             tw.login
           </button>
           <button
             className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
-            onClick={() => signIn("facebook", { callbackUrl: "/" })}
+            onClick={() => signIn("facebook")}
           >
             fb.login
           </button>
-          
+          <button
+            className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
+            onClick={() => signIn("google")}
+          >
+            g.login
+          </button>
+
           <button
             className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
             onClick={() =>
@@ -75,8 +81,7 @@ export default function Index() {
             }
           >
             creds.login
-          </button> 
-         
+          </button>
         </>
       )}
       <pre className="text-xs">{JSON.stringify(auth, null, 2)}</pre>
