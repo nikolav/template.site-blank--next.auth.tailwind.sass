@@ -1,9 +1,12 @@
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
+import "bootstrap";
 //
 import "../styles/reset.css";
 import "../styles/build.css";
+// 
+import "../styles/bootstrap.css";
 import "../styles/globals.css";
 //
 const pageVariantsMotion = {
