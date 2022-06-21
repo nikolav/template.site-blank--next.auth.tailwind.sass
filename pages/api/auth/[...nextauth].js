@@ -5,31 +5,41 @@ import FacebookProvider from "next-auth/providers/facebook";
 import TwitterProvider from "next-auth/providers/twitter";
 // import Auth0Provider from "next-auth/providers/auth0"
 // import AppleProvider from "next-auth/providers/apple"
-// import EmailProvider from "next-auth/providers/email"
+// import EmailProvider from "next-auth/providers/email";
 import CredentialsProvider from "next-auth/providers/credentials";
+//
+// import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+// import clientPromise from "../../../src/mongodb";
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers/oauth
   providers: [
-    /* EmailProvider({
-         server: process.env.EMAIL_SERVER,
-         from: process.env.EMAIL_FROM,
-       }),
-    // Temporarily removing the Apple provider from the demo site as the
-    // callback URL for it needs updating due to Vercel changing domains
-      
-    Providers.Apple({
-      clientId: process.env.APPLE_ID,
-      clientSecret: {
-        appleId: process.env.APPLE_ID,
-        teamId: process.env.APPLE_TEAM_ID,
-        privateKey: process.env.APPLE_PRIVATE_KEY,
-        keyId: process.env.APPLE_KEY_ID,
-      },
-    }),
-    */
+    // EmailProvider({
+    //   server: {
+    //     host: process.env.EMAIL_SERVER_HOST,
+    //     port: process.env.EMAIL_SERVER_PORT,
+    //     auth: {
+    //       user: process.env.EMAIL_SERVER_USER,
+    //       pass: process.env.EMAIL_SERVER_PASSWORD,
+    //     },
+    //   },
+    //   from: process.env.EMAIL_FROM,
+    // }),
+    //
+    // // Temporarily removing the Apple provider from the demo site as the
+    // // callback URL for it needs updating due to Vercel changing domains
+    // Providers.Apple({
+    //   clientId: process.env.APPLE_ID,
+    //   clientSecret: {
+    //     appleId: process.env.APPLE_ID,
+    //     teamId: process.env.APPLE_TEAM_ID,
+    //     privateKey: process.env.APPLE_PRIVATE_KEY,
+    //     keyId: process.env.APPLE_KEY_ID,
+    //   },
+    // }),
+    //
     FacebookProvider({
       clientId: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET,
@@ -64,8 +74,18 @@ export default NextAuth({
       },
       async authorize(credentials, req) {
         const DB = {
-          1: { id: 1, name: "J", email: "j@example.com", image: "http://localhost:3000/pic-j" },
-          2: { id: 2, name: "K", email: "k@example.com", image: "http://localhost:3000/pic-k" },
+          1: {
+            id: 1,
+            name: "J",
+            email: "j@example.com",
+            image: "http://localhost:3000/pic-j",
+          },
+          2: {
+            id: 2,
+            name: "K",
+            email: "k@example.com",
+            image: "http://localhost:3000/pic-k",
+          },
         };
         // You need to provide your own logic here that takes the credentials
         // submitted and returns either a object representing a user or value
@@ -96,6 +116,8 @@ export default NextAuth({
       },
     }),
   ],
+  // adapter: MongoDBAdapter(clientPromise),
+  //
   // theme: {
   //   colorScheme: "light",
   // },
@@ -108,12 +130,12 @@ export default NextAuth({
   //   async redirect({ url, baseUrl }) {
   //     return baseUrl;
   //   },
-  //   async session({ session, user, token }) {
-  //     return session;
-  //   },
-  //   async jwt({ token, user, account, profile, isNewUser }) {
-  //     return token;
-  //   },
+  // session: ({ session, user, token }) => {
+  //   return session;
+  // },
+  // jwt: ({ token, user, account, profile, isNewUser }) => {
+  //   return token;
+  // },
   // },
   // pages: {
   //   signIn: "/auth/login",

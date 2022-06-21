@@ -14,8 +14,10 @@ export default function Index() {
         <meta name="description" content="NextApp" />
       </Head>
       <div className="prose">
-        <Link href="/page2">page-2</Link>
-        <h1 className="text-slate-500 uppercase font-bold">hello</h1>
+        <Link href="/page2">
+          <a className="underline text-indigo-600">page-2</a>
+        </Link>
+        <h1 className="text-slate-500 uppercase font-bold">welcome</h1>
       </div>
       {auth ? (
         <button
@@ -26,16 +28,31 @@ export default function Index() {
         </button>
       ) : (
         <>
+          {/* 
           <button
             className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
-            onClick={() => signIn("github")}
+            onClick={() =>
+              signIn("email", {
+                email: "vukovicnikola2014@gmail.com",
+                callbackUrl: "/",
+                redirect: false,
+              })
+            }
+            // onClick={signIn}
+          >
+            email.login
+          </button> 
+          */}
+          <button
+            className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
+            onClick={() => signIn("github", { callbackUrl: "/" })}
             // onClick={signIn}
           >
             gh.login
           </button>
           <button
             className="bg-slate-500 text-sm hover:bg-slate-600 p-1 px-4 text-white rounded-full"
-            onClick={() => signIn("twitter")}
+            onClick={() => signIn("twitter", { callbackUrl: "/" })}
           >
             tw.login
           </button>
@@ -52,6 +69,7 @@ export default function Index() {
                 email: "k@example.com",
                 password: "122333",
                 callbackUrl: "/",
+                redirect: false,
               })
             }
           >

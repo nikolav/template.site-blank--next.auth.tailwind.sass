@@ -5,7 +5,9 @@ const Page2 = () => {
   return (
     <div>
       <h1>
-        <Link href="/">index</Link>
+        <Link href="/">
+          <a className="underline text-indigo-600">index</a>
+        </Link>
       </h1>
       <h4>page-2</h4>
       <p>
