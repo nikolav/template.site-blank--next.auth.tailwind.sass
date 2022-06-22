@@ -7,7 +7,7 @@ const Page2 = () => {
       <Link href="/">
         <a className="underline text-indigo-600">index</a>
       </Link>
-      <h4 className="text-slate-500 uppercase font-bold">page-2</h4>
+      <h1 className="text-slate-500 uppercase font-bold">page-2</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
         accusamus, voluptas distinctio itaque id harum impedit nostrum
