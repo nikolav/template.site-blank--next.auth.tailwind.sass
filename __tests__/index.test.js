@@ -11,9 +11,23 @@ const MockIndex = () => {
     </SessionProvider>
   );
 };
+//
+// beforeEach(() => {
+//   initialize();
+// });
+// afterEach(() => {
+//   cleanup();
+// });
+// beforeAll(() => {
+//   init();
+// });
+// afterAll(() => {
+//   clean();
+// });
 ////
 ////
 describe("loads", () => {
+  // run it.only.. to run 1 test
   it("inits", () => {});
   it("renders welcome heading", () => {
     render(<MockIndex />);
