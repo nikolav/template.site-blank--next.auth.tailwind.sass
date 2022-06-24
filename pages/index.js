@@ -2,11 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
-// import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 // import modcss from "../styles/Index.module.css";
 
 export default function Index() {
-  // const { data: auth, status: authStatus } = useSession();
+  const { data: auth, status: authStatus } = useSession();
   return (
     <>
       <Head>
