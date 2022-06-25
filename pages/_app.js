@@ -2,6 +2,9 @@ import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
 //
+import { Provider as ReduxStoreProvider } from "react-redux";
+import { store } from "../app/store/redux";
+//
 import "../styles/reset.css";
 import "../styles/build.css";
 import "../styles/globals.css";
@@ -50,17 +53,19 @@ function MyApp({
         refetchInterval={0}
         refetchOnWindowFocus={true}
       >
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={route}
-            initial="out"
-            animate="in"
-            exit="out"
-            variants={pageVariantsMotion}
-          >
-            <Component {...restPageProps} />
-          </motion.div>
-        </AnimatePresence>
+        <ReduxStoreProvider store={store}>
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={route}
+              initial="out"
+              animate="in"
+              exit="out"
+              variants={pageVariantsMotion}
+            >
+              <Component {...restPageProps} />
+            </motion.div>
+          </AnimatePresence>
+        </ReduxStoreProvider>
       </SessionProvider>
     </>
   );
