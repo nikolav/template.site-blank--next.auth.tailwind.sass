@@ -88,3 +88,7 @@ Thumbs.db:encryptable
 web_modules/
 yarn-debug.log*
 yarn-error.log*
+
+# Supabase
+**/supabase/.branches
+**/supabase/.temp

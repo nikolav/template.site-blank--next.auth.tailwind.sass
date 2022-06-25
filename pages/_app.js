@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 if ("undefined" !== typeof window)
   require("bootstrap");
 //
+import { Provider as ReduxStoreProvider } from "react-redux";
+import { store } from "../app/store/redux";
+//
 import "../styles/reset.css";
 import "../styles/build.css";
 //
@@ -55,17 +58,19 @@ function MyApp({
         refetchInterval={0}
         refetchOnWindowFocus={true}
       >
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={route}
-            initial="out"
-            animate="in"
-            exit="out"
-            variants={pageVariantsMotion}
-          >
-            <Component {...restPageProps} />
-          </motion.div>
-        </AnimatePresence>
+        <ReduxStoreProvider store={store}>
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={route}
+              initial="out"
+              animate="in"
+              exit="out"
+              variants={pageVariantsMotion}
+            >
+              <Component {...restPageProps} />
+            </motion.div>
+          </AnimatePresence>
+        </ReduxStoreProvider>
       </SessionProvider>
     </>
   );
