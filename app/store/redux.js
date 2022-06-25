@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appDataReducer from "./slice-appdata";
+import flagsSliceReducer from "./slice-flags";
 //
 export const store = configureStore({
   reducer: {
     appdata: appDataReducer,
+    flags: flagsSliceReducer,
   },
 });
 
