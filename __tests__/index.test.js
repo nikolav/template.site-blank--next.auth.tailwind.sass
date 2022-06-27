@@ -28,7 +28,7 @@ const MockIndex = () => {
 ////
 describe("loads", () => {
   // run it.only.. to run 1 test
-  it("inits", () => {});
+  it("boots", () => {});
   it("renders welcome heading", () => {
     render(<MockIndex />);
 
