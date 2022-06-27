@@ -1,4 +1,12 @@
 import { useAppData, ADMIN, TEST } from "./slice-appdata";
 import { useFlags, FLAG_TEST } from "./slice-flags";
+// import { useDemo, DEMO } from "./demo-slice";
 //
-export { useAppData, useFlags, ADMIN, TEST, FLAG_TEST };
+export {
+  // useDemo, DEMO,
+  useAppData,
+  ADMIN,
+  TEST,
+  useFlags,
+  FLAG_TEST,
+};

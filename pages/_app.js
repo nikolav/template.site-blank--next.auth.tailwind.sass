@@ -14,13 +14,13 @@ const pageVariantsMotion = {
     opacity: 1,
     position: "absolute",
     transition: {
-      duration: 0.24,
+      duration: 0.12,
     },
   },
   out: {
     opacity: 0,
     transition: {
-      duration: 0.1,
+      duration: 0.12,
     },
   },
 };
