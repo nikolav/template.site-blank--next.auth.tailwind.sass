@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
+import CssBaseline from '@mui/material/CssBaseline';
+import { MuiThemeProvider } from "../app/providers";
 //
 import { Provider as ReduxStoreProvider } from "react-redux";
 import { store } from "../app/store/redux";
@@ -62,7 +64,17 @@ function MyApp({
               exit="out"
               variants={pageVariantsMotion}
             >
-              <Component {...restPageProps} />
+              <MuiThemeProvider>
+                <>
+                  {/* mui css reset */}
+                  <CssBaseline />
+                  {/*  */}
+                  {/* page content */}
+                  <Component {...restPageProps} />
+                  {/*  */}
+                  {/* notifications, overlays.. */}
+                </>
+              </MuiThemeProvider>
             </motion.div>
           </AnimatePresence>
         </ReduxStoreProvider>

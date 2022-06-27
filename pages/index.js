@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import PortalOverlays from "../components/PortalOverlays";
+import { Button } from "@mui/material";
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 
 export default function Index() {
@@ -15,6 +16,8 @@ export default function Index() {
       </Link>
       <h1 className="text-slate-500 uppercase font-bold">welcome @index</h1>
       <hr />
+      <Button variant="outlined">hello</Button>
+      
       <PortalOverlays>
         <motion.div
           drag
