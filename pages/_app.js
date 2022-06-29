@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
 //
 import { Provider as ReduxStoreProvider } from "react-redux";
@@ -48,11 +48,11 @@ function MyApp({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SessionProvider
+      {/* <SessionProvider
         session={session}
         refetchInterval={0}
         refetchOnWindowFocus={true}
-      >
+      > */}
         <ReduxStoreProvider store={store}>
           <AnimatePresence initial={false}>
             <motion.div
@@ -66,7 +66,7 @@ function MyApp({
             </motion.div>
           </AnimatePresence>
         </ReduxStoreProvider>
-      </SessionProvider>
+      {/* </SessionProvider> */}
     </>
   );
 }
