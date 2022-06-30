@@ -30,11 +30,14 @@ export const counterSlice = createSlice({
     removeAppData: (state, action) => {
       delete state[action.payload];
     },
+    clearAppDataEntry: (state, action) => {
+      state[action.payload.name] = action.payload.EMPTY;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setAppData, removeAppData } = counterSlice.actions;
+export const { setAppData, removeAppData, clearAppDataEntry } = counterSlice.actions;
 
 export default counterSlice.reducer;
 
@@ -47,6 +50,7 @@ export function useAppData() {
   //
   const handle = paste((name) => appdata[name], {
     debug: () => JSON.stringify(appdata, null, 2),
+    clear: (name, EMPTY = null) => dispatch(clearAppDataEntry({ name, EMPTY })),
     has: (name) => has(appdata, name),
     ls: () => Object.keys(appdata),
     set: (name, value) => dispatch(setAppData({ name, value })),
