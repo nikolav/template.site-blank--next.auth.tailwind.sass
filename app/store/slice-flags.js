@@ -4,8 +4,10 @@ import { paste } from "../../src/util";
 
 //
 export const FLAG_TEST = "xjxjrdhdhly";
+export const FLAG_BLOKUI = "mqyrosmowbb";
 const initialState = {
   [FLAG_TEST]: null,
+  [FLAG_BLOKUI]: false,
 };
 
 export const flagsSlice = createSlice({

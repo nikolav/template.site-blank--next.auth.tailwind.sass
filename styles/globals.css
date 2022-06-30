@@ -2,4 +2,16 @@
   color: #1e2;
 }
 
+@keyframes blockuiRotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.blockuiSpinner {
+  animation: blockuiRotation 1.44s infinite;
+}
+
 /*# sourceMappingURL=globals.css.map */
