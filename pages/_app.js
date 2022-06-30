@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
 import CssBaseline from '@mui/material/CssBaseline';
 import { MuiThemeProvider } from "../app/providers";
@@ -50,11 +50,11 @@ function MyApp({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SessionProvider
+      {/* <SessionProvider
         session={session}
         refetchInterval={0}
         refetchOnWindowFocus={true}
-      >
+      > */}
         <ReduxStoreProvider store={store}>
           <AnimatePresence initial={false}>
             <motion.div
@@ -78,7 +78,7 @@ function MyApp({
             </motion.div>
           </AnimatePresence>
         </ReduxStoreProvider>
-      </SessionProvider>
+      {/* </SessionProvider> */}
     </>
   );
 }
