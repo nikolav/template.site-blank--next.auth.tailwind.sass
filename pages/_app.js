@@ -7,6 +7,8 @@ import { MuiThemeProvider } from "../app/providers";
 import { Provider as ReduxStoreProvider } from "react-redux";
 import { store } from "../app/store/redux";
 //
+import { QueryProvider } from "../app/providers";
+//
 import "../styles/reset.css";
 import "../styles/build.css";
 import "../styles/globals.css";
@@ -50,7 +52,8 @@ function MyApp({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <SessionProvider
+      <QueryProvider>
+        {/* <SessionProvider
         session={session}
         refetchInterval={0}
         refetchOnWindowFocus={true}
@@ -78,7 +81,8 @@ function MyApp({
             </motion.div>
           </AnimatePresence>
         </ReduxStoreProvider>
-      {/* </SessionProvider> */}
+        {/* </SessionProvider> */}
+      </QueryProvider>
     </>
   );
 }
