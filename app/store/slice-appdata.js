@@ -16,7 +16,7 @@ const initialState = {
   [TEST]: "1.22.333",
 };
 
-export const counterSlice = createSlice({
+export const appdataSlice = createSlice({
   name: "appdata",
   initialState,
   reducers: {
@@ -37,9 +37,9 @@ export const counterSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setAppData, removeAppData, clearAppDataEntry } = counterSlice.actions;
+export const { setAppData, removeAppData, clearAppDataEntry } = appdataSlice.actions;
 
-export default counterSlice.reducer;
+export default appdataSlice.reducer;
 
 //
 // export redux store shortcut
