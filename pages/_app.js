@@ -7,9 +7,13 @@ import { store } from "../app/store/redux";
 //
 import { QueryProvider } from "../app/providers";
 //
+import { ToastContainer } from "react-toastify";
+import PortalOverlays from "../components/PortalOverlays";
+//
 import "../styles/reset.css";
 import "../styles/build.css";
 import "../styles/globals.css";
+import "react-toastify/dist/ReactToastify.min.css";
 //
 const pageVariantsMotion = {
   in: {
@@ -57,17 +61,41 @@ function MyApp({
         refetchOnWindowFocus={true}
       > */}
         <ReduxStoreProvider store={store}>
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={route}
-              initial="out"
-              animate="in"
-              exit="out"
-              variants={pageVariantsMotion}
-            >
-              <Component {...restPageProps} />
-            </motion.div>
-          </AnimatePresence>
+          <>
+            {/* content */}
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={route}
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={pageVariantsMotion}
+              >
+                <Component {...restPageProps} />
+              </motion.div>
+            </AnimatePresence>
+            {/*  */}
+            {/* toasts */}
+            {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
+            <PortalOverlays>
+              <ToastContainer
+                autoClose={4242}
+                closeOnClick
+                draggable
+                hideProgressBar
+                limit={3}
+                newestOnTop={false}
+                pauseOnFocusLoss
+                pauseOnHover
+                position="top-right"
+                rtl={false}
+                //
+                // closeButton
+                // icon={false}
+                // theme: light | dark | colored
+              />
+            </PortalOverlays>
+          </>
         </ReduxStoreProvider>
         {/* </SessionProvider> */}
       </QueryProvider>
