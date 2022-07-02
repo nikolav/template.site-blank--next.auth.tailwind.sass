@@ -10,6 +10,9 @@ export default function Index() {
       </Link>{" "}
       <Link href="/demo-supabase">
         <a className="underline text-indigo-600">demo-supabase</a>
+      </Link>{" "}
+      <Link href="/demo-toastify">
+        <a className="underline text-indigo-600">demo-toastify</a>
       </Link>
       <h1 className="text-slate-500 uppercase font-bold">welcome @index</h1>
       <hr />

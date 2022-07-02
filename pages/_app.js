@@ -1,7 +1,7 @@
 import Head from "next/head";
 // import { SessionProvider } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 import { MuiThemeProvider } from "../app/providers";
 //
 import { Provider as ReduxStoreProvider } from "react-redux";
@@ -9,9 +9,13 @@ import { store } from "../app/store/redux";
 //
 import { QueryProvider } from "../app/providers";
 //
+import { ToastContainer } from "react-toastify";
+import PortalOverlays from "../components/PortalOverlays";
+//
 import "../styles/reset.css";
 import "../styles/build.css";
 import "../styles/globals.css";
+import "react-toastify/dist/ReactToastify.min.css";
 //
 const pageVariantsMotion = {
   in: {
@@ -59,27 +63,44 @@ function MyApp({
         refetchOnWindowFocus={true}
       > */}
         <ReduxStoreProvider store={store}>
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={route}
-              initial="out"
-              animate="in"
-              exit="out"
-              variants={pageVariantsMotion}
-            >
-              <MuiThemeProvider>
-                <>
-                  {/* mui css reset */}
-                  <CssBaseline />
-                  {/*  */}
-                  {/* page content */}
-                  <Component {...restPageProps} />
-                  {/*  */}
-                  {/* notifications, overlays.. */}
-                </>
-              </MuiThemeProvider>
-            </motion.div>
-          </AnimatePresence>
+          <MuiThemeProvider>
+            {/* mui css reset */}
+            <CssBaseline />
+            {/*  */}
+            {/* toasts */}
+            {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
+            <PortalOverlays>
+              <ToastContainer
+                autoClose={4242}
+                closeOnClick
+                draggable
+                hideProgressBar
+                limit={3}
+                newestOnTop={false}
+                pauseOnFocusLoss
+                pauseOnHover
+                position="top-right"
+                rtl={false}
+                //
+                // closeButton
+                // icon={false}
+                // theme: light | dark | colored
+              />
+            </PortalOverlays>
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={route}
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={pageVariantsMotion}
+              >
+                {/*  */}
+                {/* page content */}
+                <Component {...restPageProps} />
+              </motion.div>
+            </AnimatePresence>
+          </MuiThemeProvider>
         </ReduxStoreProvider>
         {/* </SessionProvider> */}
       </QueryProvider>
