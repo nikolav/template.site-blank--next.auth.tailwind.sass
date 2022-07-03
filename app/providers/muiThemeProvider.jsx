@@ -9,8 +9,10 @@ import {
   responsiveFontSizes,
 } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import  { deepmerge } from "@mui/utils";
 
 ////
+const defaultTheme = {};
 const primaryThemeColors = {};
 const darkThemeColors = {
   background: {
