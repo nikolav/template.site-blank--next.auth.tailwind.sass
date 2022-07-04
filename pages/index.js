@@ -4,16 +4,14 @@ import Link from "next/link";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { useColorMode } from "../app/store";
 //
 import Panel from "../components/Panel/Panel";
 import Paper from "@mui/material/Paper";
-import useStateSwitch from "../src/hooks/use-state-switch";
+import { useStateSwitch } from "../src/hooks";
 //
 export default function Index() {
   const { isActive, toggle } = useStateSwitch();
   const [anchor, setAnchor] = useState();
-  const colorMode = useColorMode();
   //
   return (
     <Container sx={{ width: 920 }}>
@@ -32,7 +30,7 @@ export default function Index() {
         welcome @index
       </Typography>
       <Button ref={setAnchor} variant="outlined" onClick={toggle}>
-        toggle theme
+        ok
       </Button>
       <Panel.Appear
         placement="right-start"

@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
-import { stripEndSlashes } from "../util";
+import { stripEndSlashes, isString } from "../util";
 //
 // api urls here
 const API_URL_dev = "/api";
@@ -83,6 +83,22 @@ export function useQueryResource(RESOURCE, config = {}) {
     {
       ...DEFAULT_QUERY_CONFIG,
       initialData: () => queryClient.getQueryData(RESOURCE),
+      ...config,
+    }
+  );
+}
+//
+export function useQueryResourceBase(resource, config = {}) {
+  // resource: { key: string.unique | string[], url: string.url } | string
+  const queryClient = useQueryClient();
+  if (isString(resource)) resource = { key: resource, url: resource };
+  //
+  return useQuery(
+    resource.key,
+    (_key) => axios.get(resource.url).then((res) => res.data),
+    {
+      ...DEFAULT_QUERY_CONFIG,
+      initialData: () => queryClient.getQueryData(resource.key),
       ...config,
     }
   );

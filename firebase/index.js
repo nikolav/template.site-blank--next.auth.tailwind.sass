@@ -7,14 +7,15 @@ import { getDatabase } from "firebase/database";
 
 //
 const config = {
-  //   apiKey: "AIzaSyCBBMv6MsjGdRb2CPGNlvAoGm0QOnI8QbM",
-  //   appId: "1:759662677577:web:4f2043f084753f8923f998",
-  //   authDomain: "test-wine-online.firebaseapp.com",
-  //   databaseURL: "https://test-wine-online-default-rtdb.europe-west1.firebasedatabase.app",
-  //   measurementId: "G-Q3F7SSETLW",
-  //   messagingSenderId: "759662677577",
-  //   projectId: "test-wine-online",
-  //   storageBucket: "test-wine-online.appspot.com",
+  apiKey: "AIzaSyDcV6xhVV1D6jv6yjQ4Tnc8q5BS4xPVIvQ",
+  appId: "1:815656493029:web:593d18324b0ab30cb5d90c",
+  authDomain: "jfejcxjyujx.firebaseapp.com",
+  databaseURL:
+    "https://jfejcxjyujx-default-rtdb.europe-west1.firebasedatabase.app",
+  measurementId: "G-LB96JH1BJY",
+  messagingSenderId: "815656493029",
+  projectId: "jfejcxjyujx",
+  storageBucket: "jfejcxjyujx.appspot.com",
 };
 
 //

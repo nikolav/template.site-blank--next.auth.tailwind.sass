@@ -9,15 +9,15 @@ import {
   responsiveFontSizes,
 } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import  { deepmerge } from "@mui/utils";
+// import  { deepmerge } from "@mui/utils";
 
 ////
-const defaultTheme = {};
+// const defaultTheme = {};
 const primaryThemeColors = {};
 const darkThemeColors = {
   background: {
-    default: "#222",
-    paper: "#ccc",
+    default: "#181818",
+    paper: "#383838",
   },
   text: {
     primary: "#ccc",
