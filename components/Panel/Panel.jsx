@@ -7,7 +7,7 @@ import { usePopper } from "react-popper";
 ////
 ////
 const Panel = ({
-  refAnchor,
+  anchor,
   isActive = true,
   placement = "auto",
   offset = [0, 0],
@@ -28,7 +28,7 @@ const Panel = ({
   };
   const [popperElement, setPopperElement] = useState(null);
   const { styles, attributes } = usePopper(
-    refAnchor,
+    anchor,
     popperElement,
     popperConfig
   );
@@ -39,7 +39,7 @@ const Panel = ({
         ref={setPopperElement}
         style={styles.popper}
         {...attributes.popper}
-        className="z-20 m-0 p-0"
+        className="z-10 m-0 p-0"
       >
         {children}
       </div>
@@ -48,7 +48,7 @@ const Panel = ({
 };
 //
 const DEFAULT_DURATION_IN = 0.24;
-const DEFAULT_DURATION_OUT = 0.1;
+const DEFAULT_DURATION_OUT = 0.12;
 const APPEAR = {
   slideUp: {
     initial: { opacity: 0, y: 12, scale: 1 },
@@ -97,7 +97,7 @@ const APPEAR = {
 };
 //
 const PanelAppear = ({
-  refAnchor,
+  anchor,
   className,
   children,
   isActive = false,
@@ -112,7 +112,7 @@ const PanelAppear = ({
   return (
     <AnimatePresence initial={false}>
       {isActive && (
-        <Panel isActive={isActive} refAnchor={refAnchor} {...rest}>
+        <Panel isActive={isActive} anchor={anchor} {...rest}>
           <motion.div
             initial={APPEAR[effect].initial}
             exit={APPEAR[effect].exit}
@@ -137,7 +137,7 @@ export default Panel;
 /*
 <Popper
 isActive
-refAnchor={el}
+anchor={el}
 placement="top"
 offset={[0, 0]}
 >
