@@ -4,7 +4,6 @@ import { onValue, set, ref } from "firebase/database";
 import useIsMounted from "./use-is-mounted";
 //
 export const localId = (id) => `yxgfnyzciku.${id}`;
-export const CREATED_AT = "_@";
 //@@
 const useSocialLike = (id) => {
   //

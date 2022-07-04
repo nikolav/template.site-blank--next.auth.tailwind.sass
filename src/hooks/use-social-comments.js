@@ -1,24 +1,23 @@
 import { useEffect, useState } from "react";
-import { dbRealtime as db } from "../../app/firebase";
+import { dbRealtime as db } from "../../firebase";
 import { onValue, set, ref, push, remove } from "firebase/database";
 import { sortByTimestampDesc, paste } from "../util";
 //
-export const localId = (id) => `jqimqtyiwma.${id}`;
-export const CREATED_AT = "_@";
+const CREATED_AT = "_@";
 //@@@
-export const useSocialComments = (entityId) => {
+const useSocialComments = (entityId) => {
   //
   const dbPath = `comments/${entityId}`;
-  const itemRefComments = ref(db, dbPath);
+  const refComments = ref(db, dbPath);
   //
   const [commentsDB, setCommentsDB] = useState({});
   //
-  const comments = paste(() => commentsDB, {
+  const handle = paste(() => commentsDB, {
     // { uid: ID, user: string, comment: string }
     add: (comment = {}) => {
-      const refNewPost = push(itemRefComments);
-      set(refNewPost, {
-        key: refNewPost.key,
+      const refNewComment = push(refComments);
+      set(refNewComment, {
+        key: refNewComment.key,
         [CREATED_AT]: Date.now(),
         ...comment,
       });
@@ -39,12 +38,14 @@ export const useSocialComments = (entityId) => {
   //
   useEffect(
     () =>
-      onValue(itemRefComments, (snapshot) =>
+      onValue(refComments, (snapshot) =>
         setCommentsDB((current) => snapshot.val() ?? current)
       ),
     []
   );
   //
-  return comments;
+  return handle;
   //
 };
+
+export default useSocialComments;
