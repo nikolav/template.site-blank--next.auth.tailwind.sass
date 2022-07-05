@@ -1,10 +1,13 @@
 import Link from "next/link";
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
-
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+//
 export default function Index() {
   //
   return (
-    <div>
+    <Container sx={{ width: 920 }}>
       <Link href="/page2">
         <a className="underline text-indigo-600">page-2</a>
       </Link>{" "}
@@ -14,8 +17,12 @@ export default function Index() {
       <Link href="/demo-toastify">
         <a className="underline text-indigo-600">demo-toastify</a>
       </Link>
-      <h1 className="text-slate-500 uppercase font-bold">welcome @index</h1>
+      {/* <h1 className="text-slate-500 uppercase font-bold">welcome @index</h1> */}
       <hr />
-    </div>
+      <Typography variant="h2" component="h1">
+        welcome @index
+      </Typography>
+      <Button variant="outlined">ok</Button>
+    </Container>
   );
 }

@@ -16,7 +16,7 @@ const initialState = {
   [TEST]: "1.22.333",
 };
 
-export const counterSlice = createSlice({
+export const appdataSlice = createSlice({
   name: "appdata",
   initialState,
   reducers: {
@@ -30,13 +30,16 @@ export const counterSlice = createSlice({
     removeAppData: (state, action) => {
       delete state[action.payload];
     },
+    clearAppDataEntry: (state, action) => {
+      state[action.payload.name] = action.payload.EMPTY;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setAppData, removeAppData } = counterSlice.actions;
+export const { setAppData, removeAppData, clearAppDataEntry } = appdataSlice.actions;
 
-export default counterSlice.reducer;
+export default appdataSlice.reducer;
 
 //
 // export redux store shortcut
@@ -47,6 +50,7 @@ export function useAppData() {
   //
   const handle = paste((name) => appdata[name], {
     debug: () => JSON.stringify(appdata, null, 2),
+    clear: (name, EMPTY = null) => dispatch(clearAppDataEntry({ name, EMPTY })),
     has: (name) => has(appdata, name),
     ls: () => Object.keys(appdata),
     set: (name, value) => dispatch(setAppData({ name, value })),

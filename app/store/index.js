@@ -3,6 +3,8 @@ import { useFlags, FLAG_TEST, FLAG_BLOKUI } from "./slice-flags";
 import { useResourceMain } from "../resource";
 // import { useDemo, DEMO } from "./demo-slice";
 //
+import { useColorMode } from "../providers/muiThemeProvider";
+//
 export {
   // useDemo, DEMO,
   useAppData,
@@ -13,4 +15,5 @@ export {
   FLAG_TEST,
   //
   useResourceMain,
+  useColorMode,
 };

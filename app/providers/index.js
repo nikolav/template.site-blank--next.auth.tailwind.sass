@@ -1,3 +1,4 @@
+import MuiThemeProvider from "./muiThemeProvider";
 import QueryProvider from "./QueryProvider";
 
-export { QueryProvider };
+export { QueryProvider, MuiThemeProvider };

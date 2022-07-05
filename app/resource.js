@@ -1,5 +1,8 @@
 import { useEffect, useState, createContext, useContext } from "react";
-import { useQueryMain } from "../src/hooks/use-query-resource";
+import { 
+  // useQueryResourceBase, 
+  useQueryMain
+} from "../src/hooks";
 //
 const ResourceMainContext = createContext();
 //
