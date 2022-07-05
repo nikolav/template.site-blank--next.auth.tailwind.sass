@@ -5,8 +5,12 @@ import useSocialLike from "./use-social-like";
 import useSocialComments from "./use-social-comments";
 import { useQueryResource, useQueryMain, useQueryResourceBase } from "./use-query-resource";
 import useTimer from "./use-timer";
+import useFancyboxGallery from "./use-fancybox-gallery";
+import useFileReader from "./use-file-reader";
 // 
 export {
+  useFancyboxGallery,
+  useFileReader,
   useInputSynced,
   useIsMounted,
   useQueryMain,

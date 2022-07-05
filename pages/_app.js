@@ -15,6 +15,7 @@ import PortalOverlays from "../components/PortalOverlays";
 import "../styles/reset.css";
 import "../styles/build.css";
 import "../styles/globals.css";
+import "@fancyapps/ui/dist/fancybox.css";
 import "react-toastify/dist/ReactToastify.min.css";
 //
 const pageVariantsMotion = {
