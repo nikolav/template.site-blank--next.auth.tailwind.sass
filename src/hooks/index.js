@@ -3,8 +3,9 @@ import useIsMounted from "./use-is-mounted";
 import useStateSwitch from "./use-state-switch";
 import useSocialLike from "./use-social-like";
 import useSocialComments from "./use-social-comments";
-import { useQueryResource, useQueryMain, useQueryResourceBase } from "./use-state-switch";
-
+import { useQueryResource, useQueryMain, useQueryResourceBase } from "./use-query-resource";
+import useTimer from "./use-timer";
+// 
 export {
   useInputSynced,
   useIsMounted,
@@ -14,4 +15,5 @@ export {
   useSocialComments,
   useSocialLike,
   useStateSwitch,
+  useTimer,
 };
