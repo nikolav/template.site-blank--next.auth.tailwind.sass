@@ -21,10 +21,13 @@ import "react-toastify/dist/ReactToastify.min.css";
 const pageVariantsMotion = {
   in: {
     opacity: 1,
-    // position: "absolute",
+    position: "absolute",
     transition: {
       duration: 0.12,
     },
+  },
+  transitionEnd: {
+    position: "initial",
   },
   out: {
     opacity: 0,
@@ -89,7 +92,7 @@ function MyApp({
                   // theme: light | dark | colored
                 />
               </PortalOverlays>
-              <AnimatePresence initial={false} exitBeforeEnter>
+              <AnimatePresence initial={false}>
                 <motion.div
                   key={route}
                   initial="out"

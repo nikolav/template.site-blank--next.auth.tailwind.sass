@@ -6,8 +6,13 @@ import { omit } from "../../src/util";
 import { useAuthSession } from "../providers/AuthSessionProvider";
 //
 export const AUTH = "dulhvpewrxd";
+export const AUTH_ERROR = "jmfcmsbvhwy";
+export const AUTH_PROCESSING = "ovughjskbex";
+//
 const initialState = {
   [AUTH]: null,
+  [AUTH_ERROR]: null,
+  [AUTH_PROCESSING]: null,
 };
 
 export const authSlice = createSlice({
@@ -23,6 +28,15 @@ export const authSlice = createSlice({
         "_@": user.created_at,
       };
     },
+    setAuthError: (state, action) => {
+      state[AUTH_ERROR] = action.payload;
+    },
+    setAuthProcessingOn: (state, _action) => {
+      state[AUTH_PROCESSING] = true;
+    },
+    setAuthProcessingOff: (state, _action) => {
+      state[AUTH_PROCESSING] = false;
+    },
     destroyAuth: (state, _action) => {
       state[AUTH] = null;
     },
@@ -30,7 +44,13 @@ export const authSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setAuth, destroyAuth } = authSlice.actions;
+export const {
+  setAuth,
+  setAuthError,
+  setAuthProcessingOn,
+  setAuthProcessingOff,
+  destroyAuth,
+} = authSlice.actions;
 
 export default authSlice.reducer;
 
@@ -42,6 +62,15 @@ export function useAuth() {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   //
+  const authError = (error) => dispatch(setAuthError(error));
+  const authNoError = () => authError(null);
+  const authProcessingOn = () => dispatch(setAuthProcessingOn());
+  const authProcessingOff = () => dispatch(setAuthProcessingOff());
+  const authStatusRestart = () => {
+    authNoError();
+    authProcessingOn();
+  };
+  //
   useEffect(() => {
     if (!session?.user) {
       dispatch(destroyAuth());
@@ -51,20 +80,55 @@ export function useAuth() {
   }, [session?.user]);
   //
   return {
+    error: auth[AUTH_ERROR],
+    processing: auth[AUTH_PROCESSING],
+    //
     auth: auth[AUTH],
-    login: async (creds) => await client.auth.signIn(creds),
-    register: async (creds) =>
-      await client.auth.signUp(
-        {
-          email: creds.email,
-          password: creds.password,
-        },
-        {
-          data: {
-            ...omit(creds, ["email", "password"]),
+    //
+    login: async (creds) => {
+      authStatusRestart();
+      try {
+        const { error } = await client.auth.signIn(creds);
+        if (error) authError(error);
+      } catch (error) {
+        authError(error);
+      } finally {
+        authProcessingOff();
+      }
+    },
+    //
+    register: async (creds) => {
+      authStatusRestart();
+      try {
+        const { error } = await client.auth.signUp(
+          {
+            email: creds.email,
+            password: creds.password,
           },
-        }
-      ),
-    logout: async () => await client.auth.signOut(),
+          {
+            data: {
+              ...omit(creds, ["email", "password"]),
+            },
+          }
+        );
+        if (error) authError(error);
+      } catch (error) {
+        authError(error);
+      } finally {
+        authProcessingOff();
+      }
+    },
+    //
+    logout: async () => {
+      authStatusRestart();
+      try {
+        const { error } = await client.auth.signOut();
+        if (error) authError(error);
+      } catch (error) {
+        authError(error);
+      } finally {
+        authProcessingOff();
+      }
+    },
   };
 }
