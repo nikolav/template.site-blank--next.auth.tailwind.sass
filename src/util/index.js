@@ -4,7 +4,7 @@ import noop from "./noop";
 import prevent from "./prevent";
 //
 import { omit } from "lodash";
-
+import md5 from "md5";
 //
 const paste = q.object.paste;
 const stripEndSlashes = q.str.stripEndSlashes;
@@ -16,6 +16,7 @@ export {
   arrayRand,
   has,
   isString,
+  md5,
   noop,
   omit,
   paste,
