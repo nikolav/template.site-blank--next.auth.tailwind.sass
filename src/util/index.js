@@ -2,6 +2,8 @@ import q from "nikolav-q";
 import { has } from "./has";
 import noop from "./noop";
 import prevent from "./prevent";
+//
+import { omit } from "lodash";
 
 //
 const paste = q.object.paste;
@@ -15,6 +17,7 @@ export {
   has,
   isString,
   noop,
+  omit,
   paste,
   prevent,
   sortByTimestampDesc,

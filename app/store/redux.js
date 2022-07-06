@@ -1,14 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appDataReducer from "./slice-appdata";
 import flagsSliceReducer from "./slice-flags";
-//
-// import demoSliceReducer from "./demo-slice";
+import authSliceReducer from "./slice-auth";
 //
 export const store = configureStore({
   reducer: {
     appdata: appDataReducer,
+    auth: authSliceReducer,
     flags: flagsSliceReducer,
-    // demo: demoSliceReducer,
   },
 });
 
