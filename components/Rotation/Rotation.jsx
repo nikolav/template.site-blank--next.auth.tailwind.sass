@@ -163,7 +163,6 @@ export default function Rotation({
           padding: 0,
         }}
         onMouseOver={() => !manual && timerControls.stop()}
-        // onMouseOut={() => !manual && slideshowStart()}
         onMouseLeave={() => !manual && slideshowStart()}
         onClick={prevent(() => onClick(active))}
         {...rest}

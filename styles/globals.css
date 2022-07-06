@@ -2,6 +2,19 @@
   color: #1e2;
 }
 
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 0.2rem;
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #334155;
+}
+
 @keyframes blockuiRotation {
   from {
     transform: rotate(0deg);

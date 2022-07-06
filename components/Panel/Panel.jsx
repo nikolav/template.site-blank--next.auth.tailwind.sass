@@ -33,7 +33,7 @@ const Panel = ({
     popperConfig
   );
   //
-  return true === isActive ? (
+  return isActive ? (
     <PortalOverlays>
       <div
         ref={setPopperElement}

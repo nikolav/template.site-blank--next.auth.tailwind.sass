@@ -4,6 +4,7 @@ import { useResourceMain } from "../resource";
 // import { useDemo, DEMO } from "./demo-slice";
 //
 import { useColorMode } from "../providers/muiThemeProvider";
+import { useAuth, AUTH } from "./slice-auth";
 //
 export {
   // useDemo, DEMO,
@@ -13,6 +14,8 @@ export {
   useFlags,
   FLAG_BLOKUI,
   FLAG_TEST,
+  useAuth,
+  AUTH,
   //
   useResourceMain,
   useColorMode,
