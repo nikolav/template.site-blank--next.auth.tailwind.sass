@@ -38,8 +38,8 @@ const useSocialComments = (entityId) => {
   //
   useEffect(
     () =>
-      onValue(refComments, (snapshot) =>
-        setCommentsDB((current) => snapshot.val() ?? current)
+      onValue(refComments, (res) =>
+        setCommentsDB((current) => res.val() ?? current)
       ),
     []
   );

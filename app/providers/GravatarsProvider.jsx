@@ -12,7 +12,7 @@ export default function GravatarsProvider({ children }) {
   useEffect(
     () =>
       onValue(refG, (res) => {
-        setGravatarsDB(res.val() || {});
+        setGravatarsDB((current) => res.val() || current);
       }),
     []
   );
