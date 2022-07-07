@@ -1,9 +1,7 @@
 import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { stripEndSlashes, isString } from "../util";
-import { API_URL } from "../../app/store";
-//
-export const REST_RESOURCE_main = "main";
+import { API_URL, REST_RESOURCE_main } from "../../app/store";
 //
 export const DEFAULT_QUERY_CONFIG = {
   // refresh data on every window focus

@@ -16,7 +16,7 @@ import { store } from "../app/store/redux";
 import { ToastContainer } from "react-toastify";
 import PortalOverlays from "../components/PortalOverlays";
 //
-// import ResourceMainProvider from "../app/resource";
+// import { ResourceMainProvider } from "../app/resource";
 //
 //
 import "../styles/reset.css";
