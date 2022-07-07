@@ -84,6 +84,7 @@ export function useAuth() {
     processing: auth[AUTH_PROCESSING],
     //
     auth: auth[AUTH],
+    session,
     //
     login: async (creds) => {
       authStatusRestart();
