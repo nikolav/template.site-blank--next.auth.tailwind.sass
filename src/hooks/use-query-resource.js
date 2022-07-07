@@ -1,12 +1,7 @@
 import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { stripEndSlashes, isString } from "../util";
-//
-// api urls here
-const API_URL_dev = "/api";
-// const API_URL_production = "/api";
-//
-export const API_URL = API_URL_dev;
+import { API_URL } from "../../app/store";
 //
 export const REST_RESOURCE_main = "main";
 //

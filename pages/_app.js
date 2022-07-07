@@ -16,6 +16,8 @@ import { store } from "../app/store/redux";
 import { ToastContainer } from "react-toastify";
 import PortalOverlays from "../components/PortalOverlays";
 //
+// import ResourceMainProvider from "../app/resource";
+//
 //
 import "../styles/reset.css";
 import "../styles/build.css";
@@ -72,9 +74,10 @@ function MyApp({
         refetchInterval={0}
         refetchOnWindowFocus={true}
       > */}
-        <AuthSessionProvider>
-          <ReduxStoreProvider store={store}>
-            {/* <GravatarsProvider> */}
+        {/* <ResourceMainProvider> */}
+          <AuthSessionProvider>
+            <ReduxStoreProvider store={store}>
+              {/* <GravatarsProvider> */}
               <MuiThemeProvider>
                 {/* mui css reset */}
                 <CssBaseline />
@@ -113,9 +116,10 @@ function MyApp({
                   </motion.div>
                 </AnimatePresence>
               </MuiThemeProvider>
-            {/* </GravatarsProvider> */}
-          </ReduxStoreProvider>
-        </AuthSessionProvider>
+              {/* </GravatarsProvider> */}
+            </ReduxStoreProvider>
+          </AuthSessionProvider>
+        {/* </ResourceMainProvider> */}
         {/* </SessionProvider> */}
       </QueryProvider>
     </>
