@@ -2,7 +2,6 @@ import Link from "next/link";
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 //
 export default function Index() {
   //
@@ -22,7 +21,6 @@ export default function Index() {
       <Typography variant="h2" component="h1">
         welcome @index
       </Typography>
-      <Button variant="outlined">ok</Button>
     </Container>
   );
 }

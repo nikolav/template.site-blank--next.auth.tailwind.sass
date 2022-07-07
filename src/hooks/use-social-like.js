@@ -7,16 +7,16 @@ export const localId = (id) => `yxgfnyzciku.${id}`;
 //@@
 const useSocialLike = (id) => {
   //
-  const LIKECACHE = localId(id);
   const isMounted = useIsMounted();
+  const LIKECACHE = localId(id);
   //
   const [likeCount, setLikeCount] = useState(0);
-  const itemRefLike = ref(db, `like/${id}`);
+  const refLike = ref(db, `like/${id}`);
 
   useEffect(
     () =>
-      onValue(itemRefLike, (snapshot) =>
-        setLikeCount((old_) => snapshot.val() ?? old_)
+      onValue(refLike, (res) =>
+        setLikeCount((current) => res.val() ?? current)
       ),
     []
   );
@@ -29,12 +29,12 @@ const useSocialLike = (id) => {
     if (null != localStorage.getItem(LIKECACHE)) return unlike_();
 
     localStorage.setItem(LIKECACHE, 1);
-    set(itemRefLike, likeCount + 1);
+    set(refLike, likeCount + 1);
   }
 
   function unlike_() {
     localStorage.removeItem(LIKECACHE);
-    set(itemRefLike, likeCount - 1);
+    set(refLike, likeCount - 1);
   }
 };
 

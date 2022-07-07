@@ -6,7 +6,7 @@ import {
   QueryProvider,
   AuthSessionProvider,
   MuiThemeProvider,
-  // GravatarsProvider,
+  GravatarsProvider,
 } from "../app/providers";
 //
 import { Provider as ReduxStoreProvider } from "react-redux";
@@ -74,7 +74,7 @@ function MyApp({
       > */}
         <AuthSessionProvider>
           <ReduxStoreProvider store={store}>
-            {/* <GravatarsProvider> */}
+            <GravatarsProvider>
               <MuiThemeProvider>
                 {/* mui css reset */}
                 <CssBaseline />
@@ -113,7 +113,7 @@ function MyApp({
                   </motion.div>
                 </AnimatePresence>
               </MuiThemeProvider>
-            {/* </GravatarsProvider> */}
+            </GravatarsProvider>
           </ReduxStoreProvider>
         </AuthSessionProvider>
         {/* </SessionProvider> */}
