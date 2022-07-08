@@ -8,8 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "build:export": "next build && next export",
-    "build:css": "sass ./src/globals.scss ./styles/globals.css && tailwindcss -i ./src/tailwind.css -o ./styles/build.css",
-    "watch:css": "sass ./src/globals.scss ./styles/globals.css --watch && tailwindcss -i ./src/tailwind.css -o ./styles/build.css --watch",
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./styles/build.css",
+    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./styles/build.css --watch",
+    "sass:globals:build": "sass ./src/globals.scss ./styles/globals.css ",
+    "sass:globals:watch": "sass ./src/globals.scss ./styles/globals.css --watch",
     "test": "jest ",
     "test:watch": "jest --watch",
     "test:ci": "jest --ci"

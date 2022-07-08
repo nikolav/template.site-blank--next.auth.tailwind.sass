@@ -2,8 +2,10 @@ import Link from "next/link";
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useResourceMain } from "../app/store";
 //
 export default function Index() {
+  const { resourceMain } = useResourceMain();
   //
   return (
     <Container sx={{ width: 920 }}>
@@ -21,6 +23,7 @@ export default function Index() {
       <Typography variant="h2" component="h1">
         welcome @index
       </Typography>
+      <pre className="text-xs">{JSON.stringify(resourceMain, null, 2)}</pre>
     </Container>
   );
 }
