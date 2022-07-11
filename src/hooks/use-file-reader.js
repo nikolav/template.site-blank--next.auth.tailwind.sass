@@ -9,10 +9,18 @@ export default function useFileReader() {
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [url, setUrl] = useState(null);
+  const [dataUrl, setDataUrl] = useState(null);
 
   //
-  return [read, { error, loading, url }];
+  // return [read, { error, loading, dataUrl }];
+  return {
+    read,
+    //
+    loading,
+    error,
+    //
+    data: dataUrl,
+  };
 
   //
   function read(file) {
@@ -34,7 +42,7 @@ export default function useFileReader() {
   function reset_() {
     setError(null);
     setLoading(false);
-    setUrl(null);
+    setDataUrl(null);
   }
   //
   function loading_(evt) {
@@ -43,7 +51,7 @@ export default function useFileReader() {
     if ("error" === evt.type) {
       setError(reader_.error);
     } else {
-      setUrl(reader_.result);
+      setDataUrl(reader_.result);
     }
 
     reader_.removeEventListener("error", loading_);

@@ -10,6 +10,10 @@ const API_URL_dev = "http://localhost:3344/";
 const API_URL_production = "http://api.com/";
 const REST_RESOURCE_main = "main";
 //
+const AUTH_API_URL = "/api/auth";
+const AUTH_API_URL_register = "/api/auth/register";
+const AUTH_API_URL_authenticate = "/api/auth/authenticate";
+//
 const API_URL = API_URL_dev;
 // const API_URL = API_URL_production;
 //
@@ -17,6 +21,9 @@ export {
   API_URL,
   API_URL_dev,
   API_URL_production,
+  AUTH_API_URL,
+  AUTH_API_URL_register,
+  AUTH_API_URL_authenticate,
   REST_RESOURCE_main,
   // useDemo, DEMO,
   useAppData,

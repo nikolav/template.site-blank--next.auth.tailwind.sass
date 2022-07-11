@@ -5,6 +5,7 @@ import prevent from "./prevent";
 //
 import { omit } from "lodash";
 import md5 from "md5";
+import { eventListener, listener, listenerOne } from "./event-listener";
 //
 const paste = q.object.paste;
 const stripEndSlashes = q.str.stripEndSlashes;
@@ -14,8 +15,11 @@ const arrayRand = q.array.rand;
 
 export {
   arrayRand,
+  eventListener,
   has,
   isString,
+  listener,
+  listenerOne,
   md5,
   noop,
   omit,

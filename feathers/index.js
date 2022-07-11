@@ -5,9 +5,9 @@ import { API_URL } from "../app/store";
 
 //
 const socket = io(API_URL);
-const feClient = feathers();
+const client = feathers();
 
-feClient.configure(socketio(socket));
+client.configure(socketio(socket));
 // client.configure(
 //   feathers.authentication({
 //     storage: window.localStorage,
@@ -15,7 +15,7 @@ feClient.configure(socketio(socket));
 // );
 
 // https://docs.feathersjs.com/guides/basics/authentication.html#browser-authentication
-export default feClient;
+export default client;
 
 // // Establish a Socket.io connection
 // const socket = io();

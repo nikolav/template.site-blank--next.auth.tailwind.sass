@@ -51,8 +51,10 @@ export default function MuiThemeProvider({ children }) {
     setColorModeDark: () => setMode("dark"),
   };
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </ColorModeContext.Provider>
+    <ThemeProvider theme={theme}>
+      <ColorModeContext.Provider value={colorMode}>
+        {children}
+      </ColorModeContext.Provider>
+    </ThemeProvider>
   );
 }

@@ -13,8 +13,10 @@ import useFancyboxGallery from "./use-fancybox-gallery";
 import useFileReader from "./use-file-reader";
 import useLocalStorage from "./use-local-storage";
 import useGravatar from "./use-gravatar";
+import { useAuthApi } from "./use-auth-api";
 //
 export {
+  useAuthApi,
   useFancyboxGallery,
   useFileReader,
   useGravatar,
