@@ -1,7 +1,7 @@
 import { useState, createContext, useContext } from "react";
 import axios from "axios";
 import qs from "qs";
-import { has } from "../util/has";
+import { has } from "../util";
 import {
   AUTH_API_URL,
   AUTH_API_URL_register,
@@ -34,9 +34,9 @@ export const AuthApiProvider = ({ children }) => {
   });
   //
   const authStatusError = (error) =>
-    setAuthStatus((sess) => ({ ...sess, error }));
+    setAuthStatus((s) => ({ ...s, error }));
   const authStatusProcessingOff = () =>
-    setAuthStatus((sess) => ({ ...sess, processing: false }));
+    setAuthStatus((s) => ({ ...s, processing: false }));
   const setAuth = (authData) =>
     setAuthSession((sess) => ({ ...sess, user: authData }));
   //
@@ -46,7 +46,7 @@ export const AuthApiProvider = ({ children }) => {
     </AuthApiContext.Provider>
   );
   //
-  // fetch user
+  // -- user.find
   // creds:
   //   email:     string.unique.required;
   //   password:  string.required;
@@ -67,7 +67,7 @@ export const AuthApiProvider = ({ children }) => {
       authStatusProcessingOff();
     }
   }
-  // save user
+  // -- user.create
   //   creds:
   //     name:      string.required;
   //     email:     string.unique.required;
@@ -89,6 +89,7 @@ export const AuthApiProvider = ({ children }) => {
       authStatusProcessingOff();
     }
   }
+  // -- api.accessToken
   //   creds:
   //     email:     string.unique.required;
   //     password:  string.required;

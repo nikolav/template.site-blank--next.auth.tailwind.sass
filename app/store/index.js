@@ -1,7 +1,6 @@
 import { useAppData, ADMIN, TEST } from "./slice-appdata";
 import { useFlags, FLAG_TEST, FLAG_BLOKUI } from "./slice-flags";
 import { useResourceMain } from "../resource";
-// import { useDemo, DEMO } from "./demo-slice";
 //
 import { useColorMode } from "../providers/muiThemeProvider";
 import { useAuth, AUTH, AUTH_ERROR, AUTH_PROCESSING } from "./slice-auth";
@@ -21,11 +20,13 @@ export {
   API_URL,
   API_URL_dev,
   API_URL_production,
+  //
   AUTH_API_URL,
   AUTH_API_URL_register,
   AUTH_API_URL_authenticate,
+  //
   REST_RESOURCE_main,
-  // useDemo, DEMO,
+  //
   useAppData,
   ADMIN,
   TEST,
