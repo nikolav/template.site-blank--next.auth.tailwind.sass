@@ -7,7 +7,7 @@ import {
   AuthSessionProvider,
   MuiThemeProvider,
   // GravatarsProvider,
-  AuthApiProvider,
+  // AuthApiProvider,
 } from "../app/providers";
 //
 import { Provider as ReduxStoreProvider } from "react-redux";
@@ -76,52 +76,52 @@ function MyApp({
         refetchOnWindowFocus={true}
       > */}
         {/* <ResourceMainProvider> */}
-        <AuthApiProvider>
-          <AuthSessionProvider>
-            <ReduxStoreProvider store={store}>
-              {/* <GravatarsProvider> */}
-              <MuiThemeProvider>
-                {/* mui css reset */}
-                <CssBaseline />
-                {/*  */}
-                {/* toasts */}
-                {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
-                <PortalOverlays>
-                  <ToastContainer
-                    autoClose={4242}
-                    closeOnClick
-                    draggable
-                    hideProgressBar
-                    limit={3}
-                    newestOnTop={false}
-                    pauseOnFocusLoss
-                    pauseOnHover
-                    position="top-right"
-                    rtl={false}
-                    //
-                    // closeButton
-                    // icon={false}
-                    // theme: light | dark | colored
-                  />
-                </PortalOverlays>
-                <AnimatePresence initial={false}>
-                  <motion.div
-                    key={route}
-                    initial="out"
-                    animate="in"
-                    exit="out"
-                    variants={pageVariantsMotion}
-                  >
-                    {/*  */}
-                    {/* page content */}
-                    <Component {...pageProps} />
-                  </motion.div>
-                </AnimatePresence>
-              </MuiThemeProvider>
-              {/* </GravatarsProvider> */}
-            </ReduxStoreProvider>
-          </AuthSessionProvider>
-        </AuthApiProvider>
+        {/* <AuthApiProvider> */}
+        <AuthSessionProvider>
+          <ReduxStoreProvider store={store}>
+            {/* <GravatarsProvider> */}
+            <MuiThemeProvider>
+              {/* mui css reset */}
+              <CssBaseline />
+              {/*  */}
+              {/* toasts */}
+              {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
+              <PortalOverlays>
+                <ToastContainer
+                  autoClose={4242}
+                  closeOnClick
+                  draggable
+                  hideProgressBar
+                  limit={3}
+                  newestOnTop={false}
+                  pauseOnFocusLoss
+                  pauseOnHover
+                  position="top-right"
+                  rtl={false}
+                  //
+                  // closeButton
+                  // icon={false}
+                  // theme: light | dark | colored
+                />
+              </PortalOverlays>
+              <AnimatePresence initial={false}>
+                <motion.div
+                  key={route}
+                  initial="out"
+                  animate="in"
+                  exit="out"
+                  variants={pageVariantsMotion}
+                >
+                  {/*  */}
+                  {/* page content */}
+                  <Component {...pageProps} />
+                </motion.div>
+              </AnimatePresence>
+            </MuiThemeProvider>
+            {/* </GravatarsProvider> */}
+          </ReduxStoreProvider>
+        </AuthSessionProvider>
+        {/* </AuthApiProvider> */}
         {/* </ResourceMainProvider> */}
         {/* </SessionProvider> */}
       </QueryProvider>
