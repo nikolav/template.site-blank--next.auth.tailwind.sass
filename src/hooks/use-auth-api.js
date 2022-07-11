@@ -6,16 +6,21 @@ import { AUTH_API_URL, AUTH_API_URL_users } from "../../app/store";
 import useIsMounted from "./use-is-mounted";
 //
 const ACCESS_TOKEN = "accessToken";
-const AUTH_CONFIG_authenticate = { strategy: "local" };
+const AUTH_CONFIG = { strategy: "local" };
 const AUTH_ERROR = "authError";
 const SESSION_TOKEN = "tid.wpptyojiols";
 const reIdAndToken = /^(.*?)\.\.(.*)$/;
 //
+// access token from auth-api response
 const accessTokenFromResponse = (data) => data[ACCESS_TOKEN];
+//
+// verify auth-data
 const isValidAuth = (authData) => !!authData && 0 === authData[AUTH_ERROR];
 const isValidAuthAndToken = (authData) =>
   isValidAuth(authData) && null != accessTokenFromResponse(authData);
-const authDataFromResponse_login = (data) =>
+//
+// read auth-data from api response
+const authDataFromResponse = (data) =>
   ((authData) =>
     Object.keys(authData).reduce(
       (coll, key) => ({
@@ -24,11 +29,11 @@ const authDataFromResponse_login = (data) =>
       }),
       {}
     ))(omit(data || {}, ["accessToken", "authentication"]));
-const authDataFromResponse_register = (data) => ({ ...data });
 const authDataFromResponse_authenticate = (data) => ({
-  ...authDataFromResponse_login(data),
+  ...authDataFromResponse(data),
   [ACCESS_TOKEN]: accessTokenFromResponse(data),
 });
+const authDataFromResponse_register = (data) => ({ ...data });
 const authDataFromResponse_session = (data) => ({ ...data });
 //
 const AuthApiContext = createContext();
@@ -95,7 +100,7 @@ export const AuthApiProvider = ({ children }) => {
       const { data } = await axios({
         method: "post",
         url: AUTH_API_URL,
-        data: qs.stringify({ ...AUTH_CONFIG_authenticate, ...creds }),
+        data: qs.stringify({ ...AUTH_CONFIG, ...creds }),
       });
       authData = authDataFromResponse_authenticate(data);
       if (!isValidAuthAndToken(authData)) throw "bad credentials";
