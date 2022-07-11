@@ -1,5 +1,5 @@
 import q from "nikolav-q";
-import { omit } from "lodash";
+import { omit, pick } from "lodash";
 import md5 from "md5";
 //
 const { eventListener, prevent } = q;
@@ -18,6 +18,7 @@ export {
   noop,
   omit,
   paste,
+  pick,
   prevent,
   sortByTimestampDesc,
   stripEndSlashes,

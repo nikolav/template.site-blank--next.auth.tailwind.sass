@@ -15,3 +15,59 @@ Accept: application/json
 }
 
 ###
+
+http://localhost:3344/main
+
+###
+
+POST http://localhost:3344/main
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "app.url",
+  "value": ""
+}
+
+### auth
+
+POST http://localhost:3344/authentication
+Content-Type: application/json
+Accept: application/json
+
+{
+  "strategy": "local",
+  "email": "joujjbdtdtn@rmail.com",
+  "password": "122333"
+}
+
+### auth.create
+
+GET http://localhost:3344/users/62cc4a66c882e126ee9947a8
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NTc1NzEzMjUsImV4cCI6MTY1NzY1NzcyNSwiYXVkIjoiaHR0cHM6Ly9uaWtvbGF2LnJzLyIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjJjYzRhNjZjODgyZTEyNmVlOTk0N2E4IiwianRpIjoiYjZkOGJlMDItYmZkMi00NWU1LWFhMzgtNDUyYzE3YzllZTg2In0.Mex7Qmekq2KQhfd8ZdGKirwRruqW5Da3Qel-h6LiXZs
+
+### auth.jwt
+GET http://localhost:3344/users/
+Content-Type: application/json
+Accept: application/json
+
+{
+    "strategy": "jwt",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NTc1NzExMjIsImV4cCI6MTY1NzY1NzUyMiwiYXVkIjoiaHR0cHM6Ly9uaWtvbGF2LnJzLyIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjJjYzRhNjZjODgyZTEyNmVlOTk0N2E4IiwianRpIjoiZGM0NDBmN2YtOGVhZS00MmIyLWE0YzItMzYwZDQ5ODVmYmQwIn0.AM1YG__bDOGSYuA1nlwu66Jm5SIPk21bRtR_dSNw79c"
+}
+
+###
+
+POST http://localhost:3344/users
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "joujjbdtdtn2",
+    "email": "joujjbdtdtn2@rmail.com",
+    "password": "122333"
+}
+
+###

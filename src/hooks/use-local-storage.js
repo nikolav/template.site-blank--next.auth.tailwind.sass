@@ -7,9 +7,7 @@ export const DEFAULT_STORAGE_NAME = ".APPDATA.kcnzwxtuwqn";
 export default function useLocalStorage(name = DEFAULT_STORAGE_NAME) {
   const isMounted = useIsMounted();
   //
-  const [value, setValue] = useState(() =>
-    isMounted ? localStorage.getItem(name) : null
-  );
+  const [value, setValue] = useState(null);
   const handle = paste(
     (...args) => (args.length ? setValue_(name, ...args) : value),
     {
