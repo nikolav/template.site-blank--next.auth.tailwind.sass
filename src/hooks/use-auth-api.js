@@ -2,13 +2,16 @@ import { useEffect, useState, createContext, useContext } from "react";
 import axios from "axios";
 import qs from "qs";
 import { omit, pick, stripEndSlashes } from "../util";
-import { AUTH_API_URL, AUTH_API_URL_users } from "../../app/store";
+import {
+  AUTH_API_URL,
+  AUTH_API_URL_users,
+  AUTH_SESSION_TOKEN,
+} from "../../app/store";
 import useIsMounted from "./use-is-mounted";
 //
 const ACCESS_TOKEN = "accessToken";
 const AUTH_CONFIG = { strategy: "local" };
 const AUTH_ERROR = "authError";
-const SESSION_TOKEN = "tid.wpptyojiols";
 const reIdAndToken = /^(.*?)\.\.(.*)$/;
 //
 // access token from auth-api response
@@ -74,7 +77,7 @@ export const AuthApiProvider = ({ children }) => {
     try {
       if (authSession.user._id && authSession.token)
         localStorage.setItem(
-          SESSION_TOKEN,
+          AUTH_SESSION_TOKEN,
           `${authSession.user._id}..${authSession.token}`
         );
     } catch {}
@@ -159,7 +162,7 @@ export const AuthApiProvider = ({ children }) => {
       const { id, token } = ((m) => ({
         id: m[1],
         token: m[2],
-      }))(reIdAndToken.exec(localStorage.getItem(SESSION_TOKEN)));
+      }))(reIdAndToken.exec(localStorage.getItem(AUTH_SESSION_TOKEN)));
       //
       if (id && token) {
         const { data: authData } = await axios({
@@ -181,7 +184,7 @@ export const AuthApiProvider = ({ children }) => {
   }
   // clear user
   async function logout_() {
-    localStorage.removeItem(SESSION_TOKEN);
+    localStorage.removeItem(AUTH_SESSION_TOKEN);
     setAuthSession((sess) => ({
       ...sess,
       token: null,

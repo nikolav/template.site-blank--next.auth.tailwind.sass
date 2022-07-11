@@ -11,6 +11,7 @@ const REST_RESOURCE_main = "main";
 //
 const AUTH_API_URL = "http://localhost:3344/authentication";
 const AUTH_API_URL_users = "http://localhost:3344/users";
+const AUTH_SESSION_TOKEN = "vwubgzjskpp";
 //
 const API_URL = API_URL_dev;
 // const API_URL = API_URL_production;
@@ -22,6 +23,7 @@ export {
   //
   AUTH_API_URL,
   AUTH_API_URL_users,
+  AUTH_SESSION_TOKEN,
   //
   REST_RESOURCE_main,
   //
