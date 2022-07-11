@@ -1,7 +1,6 @@
 import { useAppData, ADMIN, TEST } from "./slice-appdata";
 import { useFlags, FLAG_TEST, FLAG_BLOKUI } from "./slice-flags";
 import { useResourceMain } from "../resource";
-// import { useDemo, DEMO } from "./demo-slice";
 //
 import { useColorMode } from "../providers/muiThemeProvider";
 import { useAuth, AUTH, AUTH_ERROR, AUTH_PROCESSING } from "./slice-auth";
@@ -10,9 +9,9 @@ const API_URL_dev = "http://localhost:3344/";
 const API_URL_production = "http://api.com/";
 const REST_RESOURCE_main = "main";
 //
-const AUTH_API_URL = "/api/auth";
-const AUTH_API_URL_register = "/api/auth/register";
-const AUTH_API_URL_authenticate = "/api/auth/authenticate";
+const AUTH_API_URL = "http://localhost:3344/authentication";
+const AUTH_API_URL_users = "http://localhost:3344/users";
+const AUTH_SESSION_TOKEN = "vwubgzjskpp";
 //
 const API_URL = API_URL_dev;
 // const API_URL = API_URL_production;
@@ -21,11 +20,13 @@ export {
   API_URL,
   API_URL_dev,
   API_URL_production,
+  //
   AUTH_API_URL,
-  AUTH_API_URL_register,
-  AUTH_API_URL_authenticate,
+  AUTH_API_URL_users,
+  AUTH_SESSION_TOKEN,
+  //
   REST_RESOURCE_main,
-  // useDemo, DEMO,
+  //
   useAppData,
   ADMIN,
   TEST,
