@@ -2,7 +2,7 @@ import q from "nikolav-q";
 import { omit, pick } from "lodash";
 import md5 from "md5";
 //
-const { eventListener, prevent } = q;
+const { eventListener, prevent, ready } = q;
 const { has, paste } = q.object;
 const { isString } = q.test;
 const { noop } = q.func;
@@ -20,6 +20,7 @@ export {
   paste,
   pick,
   prevent,
+  ready,
   sortByTimestampDesc,
   stripEndSlashes,
 };

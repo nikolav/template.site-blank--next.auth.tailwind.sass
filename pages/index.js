@@ -1,8 +1,14 @@
+// import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 // import Button from "@mui/material/Button";
+// import { useIsMounted } from "../src/hooks";
+//
+// let jquery;
+// if ("undefined" !== typeof document)
+//   jquery = require("../src/jquery/jquery.min");
 //
 export default function Index() {
   //
