@@ -97,8 +97,8 @@ export const AuthApiProvider = ({ children }) => {
   //     email:     string.unique.required;
   //     password:  string.required;
   async function authenticate_(creds) {
-    let authData = null;
     authStatusBegin();
+    let authData = null;
     try {
       const { data } = await axios({
         method: "post",
@@ -157,6 +157,7 @@ export const AuthApiProvider = ({ children }) => {
   //   id:    string.id;
   //   token: <jwt-token>;
   async function loadSession_() {
+    authStatusBegin();
     //
     try {
       const { id, token } = ((m) => ({
@@ -180,7 +181,11 @@ export const AuthApiProvider = ({ children }) => {
         }
       }
       //
-    } catch {}
+    } catch {
+      // ignore
+    } finally {
+      authStatusProcessingOff();
+    }
   }
   // clear user
   async function logout_() {

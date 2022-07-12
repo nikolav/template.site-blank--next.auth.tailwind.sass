@@ -5,6 +5,8 @@ import { useResourceMain } from "../resource";
 import { useColorMode } from "../providers/muiThemeProvider";
 import { useAuth, AUTH, AUTH_ERROR, AUTH_PROCESSING } from "./slice-auth";
 //
+import { useAuthApi } from "../../src/hooks";
+//
 const API_URL_dev = "http://localhost:3344/";
 const API_URL_production = "http://api.com/";
 const REST_RESOURCE_main = "main";
@@ -37,6 +39,7 @@ export {
   AUTH,
   AUTH_ERROR,
   AUTH_PROCESSING,
+  useAuthApi,
   //
   useResourceMain,
   useColorMode,
