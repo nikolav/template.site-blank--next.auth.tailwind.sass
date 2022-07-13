@@ -6,3 +6,5 @@
   $ grunt custom:-ajax,-css/showHide,-deprecated,-effects,-exports/global
   $ grunt custom:-ajax,-css/showHide,-deprecated,-effects,-exports/global,-exports/amd
 
+## @rehooks
+  https://github.com/rehooks

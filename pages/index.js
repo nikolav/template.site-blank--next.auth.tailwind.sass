@@ -17,6 +17,9 @@ export default function Index() {
       </Link>{" "}
       <Link href="/demo-toastify">
         <a className="text-indigo-600 underline">demo-toastify</a>
+      </Link>{" "}
+      <Link href="/demo-framer">
+        <a className="text-indigo-600 underline">demo-framer</a>
       </Link>
       {/* <h1 className="font-bold uppercase text-slate-500">welcome @index</h1> */}
       <hr />

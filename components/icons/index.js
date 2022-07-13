@@ -23,6 +23,8 @@ import {
   FaRegSave,
   FaFacebook,
   FaGithubAlt,
+  FaWindowMinimize,
+  FaRegWindowMaximize,
 } from "react-icons/fa";
 import { IoHelp } from "react-icons/io5";
 import { FiCamera, FiShare2 } from "react-icons/fi";
@@ -92,8 +94,10 @@ export {
   FaHome,
   FaRegComments,
   FaRegSave,
+  FaRegWindowMaximize,
   FaStar,
   FaViber,
+  FaWindowMinimize,
   FcGoogle,
   FiCamera,
   FiSend,
