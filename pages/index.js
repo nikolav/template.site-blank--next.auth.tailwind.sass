@@ -4,11 +4,6 @@ import Link from "next/link";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 // import Button from "@mui/material/Button";
-// import { useIsMounted } from "../src/hooks";
-//
-// let jquery;
-// if ("undefined" !== typeof document)
-//   jquery = require("../src/jquery/jquery.min");
 //
 export default function Index() {
   //
@@ -28,6 +23,45 @@ export default function Index() {
       <Typography variant="h2" component="h1">
         welcome @index
       </Typography>
+      {/* <Button
+        variant="outlined"
+        onClick={() =>
+          app.login({
+            email: "admin@nikolav.rs",
+            password: "122333",
+          })
+        }
+      >
+        login
+      </Button>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          const userName = `user.${Date.now()}`;
+          app.register({
+            name: userName,
+            email: `${userName}@email.com`,
+            password: "122333",
+          });
+        }}
+      >
+        register
+      </Button>
+      <Button
+        variant="outlined"
+        onClick={() =>
+          app.authenticate({
+            email: "admin@nikolav.rs",
+            password: "122333",
+          })
+        }
+      >
+        authenticate
+      </Button>
+      <Button variant="outlined" onClick={app.logout}>
+        logout
+      </Button>
+      <pre className="text-xs">{JSON.stringify({processing, error, token, user}, null, 2)}</pre> */}
     </Container>
   );
 }
