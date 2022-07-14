@@ -6,8 +6,18 @@ module.exports = {
     "./public/**/*.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        tablet: "596px",
+        laptop: "1024px",
+        desktop: "1280px", 
+        huge: "1580px",
+      }
+    },
   },
+  // https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
+  darkMode: "class",
+  //
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),

@@ -22,7 +22,7 @@ export default function Index() {
         <a className="text-indigo-600 underline">demo-framer</a>
       </Link>
       <hr />
-      <Typography variant="h2" component="h1">
+      <Typography variant="h2" component="h1" >
         welcome @index
       </Typography>
     </Container>

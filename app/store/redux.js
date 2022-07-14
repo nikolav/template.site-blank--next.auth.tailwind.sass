@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import appDataReducer from "./slice-appdata";
 import flagsSliceReducer from "./slice-flags";
 import authSliceReducer from "./slice-auth";
+import colorModeSliceReducer from "./slice-color-mode-tw";
 //
 export const store = configureStore({
   reducer: {
     appdata: appDataReducer,
     auth: authSliceReducer,
+    colorMode: colorModeSliceReducer,
     flags: flagsSliceReducer,
   },
 });

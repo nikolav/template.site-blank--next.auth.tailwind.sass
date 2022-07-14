@@ -21,16 +21,16 @@ export const EFFECT = {
   // @@Attention seekers
   bounce: 1,
   flash: 1,
+  headShake: 1,
+  heartBeat: 1,
+  jello: 1,
   pulse: 1,
   rubberBand: 1,
   shakeX: 1,
   shakeY: 1,
-  headShake: 1,
   swing: 1,
   tada: 1,
   wobble: 1,
-  jello: 1,
-  heartBeat: 1,
   //
   // @@Back entrances
   backInDown: 1,

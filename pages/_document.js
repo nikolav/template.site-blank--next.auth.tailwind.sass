@@ -6,7 +6,7 @@ class Doc extends Document {
     return (
         <Html>
           <Head>{/* // global, meta... */}</Head>
-          <body>
+          <body className="dark:bg-slate-900 dark:text-gray-200">
             <div id="fpxprbenbxpl" />
             <Main />
             <div id="alqcctcqkuvg" />
