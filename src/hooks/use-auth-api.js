@@ -17,12 +17,13 @@ const reIdAndToken = /^(.*?)\.\.(.*)$/;
 // access token from auth-api response
 const accessTokenFromResponse = (data) => data[ACCESS_TOKEN];
 //
-// verify auth-data
+// verify auth-data shape is valid; no nulls and errors
 const isValidAuth = (authData) => !!authData && 0 === authData[AUTH_ERROR];
 const isValidAuthAndToken = (authData) =>
   isValidAuth(authData) && null != accessTokenFromResponse(authData);
 //
 // read auth-data from api response
+// .. parse raw api response to valid shape
 const authDataFromResponse = (data) =>
   ((authData) =>
     Object.keys(authData).reduce(
@@ -41,38 +42,44 @@ const authDataFromResponse_session = (data) => ({ ...data });
 //
 const AuthApiContext = createContext();
 //
+// auth interface
 export const useAuthApi = () => useContext(AuthApiContext);
 //
-//
-// POST ${AUTH_API_URL}        # auth, token
-// POST ${AUTH_API_URL_users}  # +user
-// GET  ${AUTH_API_URL_users}  # fetch-user
-//
+// -- api.endpoints x2; @auth, @users
+//   POST ${AUTH_API_URL}        # auth, token
+//   POST ${AUTH_API_URL_users}  # +user
+//   GET  ${AUTH_API_URL_users}  # fetch-user
 export const AuthApiProvider = ({ children }) => {
   const isMounted = useIsMounted();
   const [authSession, setAuthSession] = useState({
+    //
+    // auth flags
     error: null,
     processing: null,
     //
+    // auth session
     token: null,
     user: null,
-    //
-    login: login_,
-    register: register_,
-    logout: logout_,
-    //
-    authenticate: authenticate_,
   });
+  const authSessionApi = {
+    authenticate: authenticate_,
+    login: login_,
+    logout: logout_,
+    register: register_,
+  };
+  const authSessionValue = {
+    ...authSession,
+    ...authSessionApi,
+  };
   //
+  // manage auth state
   const authStatusError = (error) => setAuthSession((s) => ({ ...s, error }));
   const authStatusProcessingOff = () =>
     setAuthSession((s) => ({ ...s, processing: false }));
-  const setAuth = (authData) =>
-    setAuthSession((sess) => ({ ...sess, user: authData }));
-  const setAuthToken = (token) =>
-    setAuthSession((sess) => ({ ...sess, token }));
-
+  const setAuth = (user) => setAuthSession((sess) => ({ ...sess, user }));
+  const setAuthToken = (token) => setAuthSession((s) => ({ ...s, token }));
   //
+  // cache session creds to enable auto login @mount
   useEffect(() => {
     try {
       if (authSession.user._id && authSession.token)
@@ -83,22 +90,25 @@ export const AuthApiProvider = ({ children }) => {
     } catch {}
   }, [authSession?.user?._id, authSession?.token]);
   //
+  // auto login @mount from localStorage
   useEffect(() => {
     isMounted && loadSession_();
   }, [isMounted]);
   //
+  //
   return (
-    <AuthApiContext.Provider value={authSession}>
+    <AuthApiContext.Provider value={authSessionValue}>
       {children}
     </AuthApiContext.Provider>
   );
+  //
   // -- api.accessToken
   //   creds:
   //     email:     string.unique.required;
   //     password:  string.required;
   async function authenticate_(creds) {
-    let authData = null;
     authStatusBegin();
+    let authData = null;
     try {
       const { data } = await axios({
         method: "post",
@@ -117,7 +127,6 @@ export const AuthApiProvider = ({ children }) => {
     //
     return authData;
   }
-
   //
   // -- user.find
   // creds:
@@ -127,6 +136,7 @@ export const AuthApiProvider = ({ children }) => {
     const authData = await authenticate_(creds);
     if (authData) setAuth(omit(authData, [ACCESS_TOKEN]));
   }
+  //
   // -- user.create
   //   creds:
   //     name:      string.required;
@@ -157,6 +167,7 @@ export const AuthApiProvider = ({ children }) => {
   //   id:    string.id;
   //   token: <jwt-token>;
   async function loadSession_() {
+    authStatusBegin();
     //
     try {
       const { id, token } = ((m) => ({
@@ -180,9 +191,14 @@ export const AuthApiProvider = ({ children }) => {
         }
       }
       //
-    } catch {}
+    } catch {
+      // ignore
+    } finally {
+      authStatusProcessingOff();
+    }
   }
-  // clear user
+  //
+  // clear session
   async function logout_() {
     localStorage.removeItem(AUTH_SESSION_TOKEN);
     setAuthSession((sess) => ({
@@ -193,8 +209,8 @@ export const AuthApiProvider = ({ children }) => {
       processing: false,
     }));
   }
-
   //
+  // reset auth-status before hiting api
   function authStatusBegin() {
     setAuthSession((sess) => ({
       ...sess,

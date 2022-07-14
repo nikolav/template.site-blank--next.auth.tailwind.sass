@@ -14,9 +14,11 @@ import useFileReader from "./use-file-reader";
 import useLocalStorage from "./use-local-storage";
 import useGravatar from "./use-gravatar";
 import { useAuthApi } from "./use-auth-api";
+import useAppEvents from "./use-events";
 //
 export {
   useAuthApi,
+  useAppEvents,
   useFancyboxGallery,
   useFileReader,
   useGravatar,

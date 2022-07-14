@@ -5,6 +5,10 @@ import { useResourceMain } from "../resource";
 import { useColorMode } from "../providers/muiThemeProvider";
 import { useAuth, AUTH, AUTH_ERROR, AUTH_PROCESSING } from "./slice-auth";
 //
+import { useAuthApi } from "../../src/hooks/use-auth-api";
+//
+import { useColorModeTW, MODE_LIGHT, MODE_DARK } from "./slice-color-mode-tw";
+//
 const API_URL_dev = "http://localhost:3344/";
 const API_URL_production = "http://api.com/";
 const REST_RESOURCE_main = "main";
@@ -37,6 +41,10 @@ export {
   AUTH,
   AUTH_ERROR,
   AUTH_PROCESSING,
+  useAuthApi,
+  useColorModeTW,
+  MODE_LIGHT,
+  MODE_DARK,
   //
   useResourceMain,
   useColorMode,
