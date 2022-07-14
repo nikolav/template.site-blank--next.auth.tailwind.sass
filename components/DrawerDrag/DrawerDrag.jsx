@@ -21,7 +21,7 @@ export default function DrawerDrag({
   onClose = noop,
   //
   offsetTop = 52,
-  offsetClose = 256,
+  offsetToggle = 256,
   //
   children,
 }) {
@@ -46,11 +46,11 @@ export default function DrawerDrag({
               top: offsetTop,
             }}
             onDragEnd={(_evt, { offset: { y } }) => {
-              if (offsetClose < y) {
+              if (offsetToggle < y) {
                 minimizeDrawer();
                 return;
               }
-              if (y < -offsetClose) maximizeDrawer();
+              if (y < -offsetToggle) maximizeDrawer();
             }}
             className="w-full sm:mx-[4px] sm:w-auto fixed z-[1] inset-x-0 rounded-t-3xl"
           >
@@ -72,19 +72,19 @@ export default function DrawerDrag({
                   <FaWindowMinimize
                     onClick={minimizeDrawer}
                     style={{ fontSize: 28, transformOrigin: "bottom" }}
-                    className="text-slate-800 opacity-20 hover:opacity-60 hover:scale-125 cursor-pointer absolute top-0 right-16 -translate-y-[122%] transition-transform duration-75"
+                    className="text-slate-800 opacity-40 hover:opacity-60 hover:scale-125 cursor-pointer absolute top-0 right-16 -translate-y-[122%] transition-transform"
                   />
                 ) : (
                   <FaRegWindowMaximize
                     onClick={maximizeDrawer}
                     style={{ fontSize: 28 }}
-                    className="text-slate-800 opacity-20 hover:opacity-60 hover:scale-110 cursor-pointer absolute top-0 right-16 -translate-y-[112%] transition-transform duration-75"
+                    className="text-slate-800 opacity-40 hover:opacity-60 hover:scale-110 cursor-pointer absolute top-0 right-16 -translate-y-[112%] transition-transform"
                   />
                 )}
                 <RiCloseCircleFill
                   onClick={onClose}
                   style={{ fontSize: 33 }}
-                  className="text-slate-800 opacity-20 hover:opacity-60 hover:scale-125 hover:text-red-600 cursor-pointer absolute top-0 right-4 -translate-y-[110%] transition-transform duration-75"
+                  className="text-slate-800 opacity-40 hover:opacity-60 hover:scale-125 hover:text-red-600 cursor-pointer absolute top-0 right-4 -translate-y-[110%] transition-transform"
                 />
 
                 {children}

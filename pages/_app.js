@@ -8,6 +8,7 @@ import {
   MuiThemeProvider,
   // GravatarsProvider,
   // AuthApiProvider,
+  AppEventsProvider,
 } from "../app/providers";
 //
 import { Provider as ReduxStoreProvider } from "react-redux";
@@ -16,6 +17,7 @@ import { store } from "../app/store/redux";
 //
 import { ToastContainer } from "react-toastify";
 import PortalOverlays from "../components/PortalOverlays";
+//
 //
 // import { ResourceMainProvider } from "../app/resource";
 //
@@ -47,7 +49,7 @@ const pageVariantsMotion = {
 
 ////
 ////
-function MyApp({
+function App({
   Component,
   // pageProps: { session, ...restPageProps },
   pageProps,
@@ -69,64 +71,66 @@ function MyApp({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <QueryProvider>
-        {/* <SessionProvider
+      <AppEventsProvider>
+        <QueryProvider>
+          {/* <SessionProvider
         session={session}
         refetchInterval={0}
         refetchOnWindowFocus={true}
       > */}
-        {/* <ResourceMainProvider> */}
-        {/* <AuthApiProvider> */}
-        <AuthSessionProvider>
-          <ReduxStoreProvider store={store}>
-            {/* <GravatarsProvider> */}
-            <MuiThemeProvider>
-              {/* mui css reset */}
-              <CssBaseline />
-              {/*  */}
-              {/* toasts */}
-              {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
-              <PortalOverlays>
-                <ToastContainer
-                  autoClose={4242}
-                  closeOnClick
-                  draggable
-                  hideProgressBar
-                  limit={3}
-                  newestOnTop={false}
-                  pauseOnFocusLoss
-                  pauseOnHover
-                  position="top-right"
-                  rtl={false}
-                  //
-                  // closeButton
-                  // icon={false}
-                  // theme: light | dark | colored
-                />
-              </PortalOverlays>
-              <AnimatePresence initial={false}>
-                <motion.div
-                  key={route}
-                  initial="out"
-                  animate="in"
-                  exit="out"
-                  variants={pageVariantsMotion}
-                >
-                  {/*  */}
-                  {/* page content */}
-                  <Component {...pageProps} />
-                </motion.div>
-              </AnimatePresence>
-            </MuiThemeProvider>
-            {/* </GravatarsProvider> */}
-          </ReduxStoreProvider>
-        </AuthSessionProvider>
-        {/* </AuthApiProvider> */}
-        {/* </ResourceMainProvider> */}
-        {/* </SessionProvider> */}
-      </QueryProvider>
+          {/* <ResourceMainProvider> */}
+          {/* <AuthApiProvider> */}
+          <AuthSessionProvider>
+            <ReduxStoreProvider store={store}>
+              {/* <GravatarsProvider> */}
+              <MuiThemeProvider>
+                {/* mui css reset */}
+                <CssBaseline />
+                {/*  */}
+                {/* toasts */}
+                {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
+                <PortalOverlays>
+                  <ToastContainer
+                    autoClose={4242}
+                    closeOnClick
+                    draggable
+                    hideProgressBar
+                    limit={3}
+                    newestOnTop={false}
+                    pauseOnFocusLoss
+                    pauseOnHover
+                    position="top-right"
+                    rtl={false}
+                    //
+                    // closeButton
+                    // icon={false}
+                    // theme: light | dark | colored
+                  />
+                </PortalOverlays>
+                <AnimatePresence initial={false}>
+                  <motion.div
+                    key={route}
+                    initial="out"
+                    animate="in"
+                    exit="out"
+                    variants={pageVariantsMotion}
+                  >
+                    {/*  */}
+                    {/* page content */}
+                    <Component {...pageProps} />
+                  </motion.div>
+                </AnimatePresence>
+              </MuiThemeProvider>
+              {/* </GravatarsProvider> */}
+            </ReduxStoreProvider>
+          </AuthSessionProvider>
+          {/* </AuthApiProvider> */}
+          {/* </ResourceMainProvider> */}
+          {/* </SessionProvider> */}
+        </QueryProvider>
+      </AppEventsProvider>
     </>
   );
 }
 
-export default MyApp;
+export default App;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import {
   motion,
   AnimatePresence,
@@ -11,23 +10,15 @@ import {
 } from "framer-motion";
 import Effect from "../components/Effect/Effect";
 import { useStateSwitch } from "../src/hooks";
-import { addClass, removeClass, select } from "../src/util";
 import DrawerDrag from "../components/DrawerDrag/DrawerDrag";
 //
 const DemoFramerMotion = () => {
   const { isActive, toggle } = useStateSwitch();
   const { isActive: isActive_d, toggle: toggle_d } = useStateSwitch();
   //
-  useEffect(() => {
-    if (isActive) {
-      addClass(select("body"), "overflow-hidden");
-      return;
-    }
-    removeClass(select("body"), "overflow-hidden");
-  }, [isActive]);
-  //
   return (
     <div>
+      
       <button onClick={toggle_d.on} className="p-4 bg-slate-500 text-white">
         open
       </button>
