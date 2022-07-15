@@ -4,10 +4,8 @@ import Link from "next/link";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { useColorMode } from "../app/store";
 //
 export default function Index() {
-  const cm = useColorMode();
   return (
     <Container fixed>
       <Link href="/page2">
@@ -22,14 +20,9 @@ export default function Index() {
       <Link href="/demo-framer">
         <a>demo-framer</a>
       </Link>
-
-      <Button onClick={cm.toggleColorMode} variant="outlined" color="primary">
-        theme
-      </Button>
       <Typography variant="h2" component="h1">
         welcome @index
       </Typography>
-      <pre className="text-xs">{JSON.stringify(cm.theme, null , 2)}</pre>
     </Container>
   );
 }

@@ -23,6 +23,7 @@ export default function DrawerDrag({
   className = "",
   offsetTop = 52,
   offsetToggle = 256,
+  controlls = true,
   //
   children,
 }) {
@@ -67,31 +68,35 @@ export default function DrawerDrag({
               }}
             >
               <div
-                className="bg-white cursor-grab pt-6 px-6 rounded-t-3xl relative"
+                className="bg-white dark:bg-slate-800 cursor-grab pt-6 px-6 rounded-t-3xl relative"
                 style={{
                   paddingBottom: 122,
                   minHeight: "calc(100vh + 122px)",
                   boxShadow: "rgb(0 0 0 / 24%) 0px 3px 12px",
                 }}
               >
-                {"maximize" === drawerMode ? (
-                  <FaWindowMinimize
-                    onClick={minimizeDrawer}
-                    style={{ fontSize: 28, transformOrigin: "bottom" }}
-                    className="text-slate-800 opacity-60 hover:opacity-80 hover:scale-125 cursor-pointer absolute top-0 right-16 -translate-y-[122%] transition-transform"
-                  />
-                ) : (
-                  <FaRegWindowMaximize
-                    onClick={maximizeDrawer}
-                    style={{ fontSize: 28 }}
-                    className="text-slate-800 opacity-60 hover:opacity-80 hover:scale-110 cursor-pointer absolute top-0 right-16 -translate-y-[112%] transition-transform"
-                  />
+                {controlls && (
+                  <>
+                    {"maximize" === drawerMode ? (
+                      <FaWindowMinimize
+                        onClick={minimizeDrawer}
+                        style={{ fontSize: 28, transformOrigin: "bottom" }}
+                        className="text-slate-800 dark:text-white opacity-60 hover:opacity-80 hover:scale-125 cursor-pointer absolute top-0 right-16 -translate-y-[122%] transition-transform"
+                      />
+                    ) : (
+                      <FaRegWindowMaximize
+                        onClick={maximizeDrawer}
+                        style={{ fontSize: 28 }}
+                        className="text-slate-800 dark:text-white opacity-60 hover:opacity-80 hover:scale-110 cursor-pointer absolute top-0 right-16 -translate-y-[112%] transition-transform"
+                      />
+                    )}
+                    <RiCloseCircleFill
+                      onClick={onClose}
+                      style={{ fontSize: 33 }}
+                      className="text-slate-800 dark:text-white opacity-60 hover:opacity-80 hover:scale-125 hover:text-red-600 dark:hover:text-red-400 cursor-pointer absolute top-0 right-4 -translate-y-[110%] transition-transform"
+                    />
+                  </>
                 )}
-                <RiCloseCircleFill
-                  onClick={onClose}
-                  style={{ fontSize: 33 }}
-                  className="text-slate-800 opacity-60 hover:opacity-80 hover:scale-125 hover:text-red-600 cursor-pointer absolute top-0 right-4 -translate-y-[110%] transition-transform"
-                />
 
                 {children}
               </div>

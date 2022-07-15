@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import { useColorMode } from "../app/store";
 import {
   motion,
   AnimatePresence,
@@ -13,11 +15,15 @@ import { useStateSwitch } from "../src/hooks";
 import DrawerDrag from "../components/DrawerDrag/DrawerDrag";
 //
 const DemoFramerMotion = () => {
+  const cm = useColorMode();
+  //
   const { isActive, toggle } = useStateSwitch();
   const { isActive: isActive_d, toggle: toggle_d } = useStateSwitch();
   //
   return (
     <div>
+
+      <Button onClick={cm.toggleColorMode} variant="outlined" color="primary">toggle</Button>
       <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
           assumenda, esse aut suscipit dolorem saepe voluptatibus fugiat ratione

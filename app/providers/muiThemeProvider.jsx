@@ -1,7 +1,7 @@
 // https://mui.com/material-ui/customization/theming/#theme-builder
 // https://bareynol.github.io/mui-theme-creator/
 //
-import { useState, useMemo, useContext, createContext } from "react";
+import { useEffect, useState, useMemo, useContext, createContext } from "react";
 // https://mui.com/material-ui/customization/theming/#createtheme-options-args-theme
 // https://mui.com/material-ui/customization/default-theme/#main-content
 //
@@ -16,6 +16,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 //
 import { themePrimary } from "../theme/mui-primary";
 import { themeDark } from "../theme/mui-dark";
+import { useColorModeTW } from "../store";
 
 ////
 //
@@ -39,6 +40,17 @@ export default function MuiThemeProvider({ children }) {
     setColorModeLight: () => setMode("light"),
     setColorModeDark: () => setMode("dark"),
   };
+  //
+  // update tailwind theme
+  const modeTW = useColorModeTW();
+  useEffect(() => {
+    if ("dark" === mode) {
+      modeTW.setColorModeDark();
+      return;
+    }
+    modeTW.setColorModeLight();
+  }, [mode]);
+  //
   return (
     <ThemeProvider theme={theme}>
       <ColorModeContext.Provider value={colorMode}>
