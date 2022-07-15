@@ -1,39 +1,26 @@
-import { useState, useMemo, useContext, createContext } from "react";
+// https://mui.com/material-ui/customization/theming/#theme-builder
+// https://bareynol.github.io/mui-theme-creator/
+//
+import { useEffect, useState, useMemo, useContext, createContext } from "react";
 // https://mui.com/material-ui/customization/theming/#createtheme-options-args-theme
 // https://mui.com/material-ui/customization/default-theme/#main-content
-// https://mui.com/material-ui/customization/default-theme/#explore
 //
 import {
   createTheme,
   ThemeProvider,
   responsiveFontSizes,
+  // styled,
 } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-// import  { deepmerge } from "@mui/utils";
+// import { deepmerge } from '@mui/utils';
+//
+import { themePrimary } from "../theme/mui-primary";
+import { themeDark } from "../theme/mui-dark";
+import { useColorModeTW } from "../store";
 
 ////
-const defaultTheme = {
-  components: {},
-};
 //
-const primaryThemeColors = {};
-const darkThemeColors = {
-  background: {
-    default: "#181818",
-    paper: "#383838",
-  },
-  text: {
-    primary: "#ccc",
-    secondary: "gray",
-  },
-};
-//
-const getDesignTokens = (mode) => ({
-  palette: {
-    ...("dark" === mode ? { mode: "dark" } : { mode: "light" }),
-    ...("dark" !== mode ? primaryThemeColors : darkThemeColors),
-  },
-});
+const getDesignTokens = (mode) => ("dark" === mode ? themeDark : themePrimary);
 //
 export const ColorModeContext = createContext();
 export const useColorMode = () => useContext(ColorModeContext);
@@ -53,6 +40,17 @@ export default function MuiThemeProvider({ children }) {
     setColorModeLight: () => setMode("light"),
     setColorModeDark: () => setMode("dark"),
   };
+  //
+  // update tailwind theme
+  const modeTW = useColorModeTW();
+  useEffect(() => {
+    if ("dark" === mode) {
+      modeTW.setColorModeDark();
+      return;
+    }
+    modeTW.setColorModeLight();
+  }, [mode]);
+  //
   return (
     <ThemeProvider theme={theme}>
       <ColorModeContext.Provider value={colorMode}>

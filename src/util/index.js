@@ -1,6 +1,8 @@
 import q from "nikolav-q";
 import omit from "lodash/omit";
 import pick from "lodash/pick";
+import pickBy from "lodash/pickBy";
+import isFunction from "lodash/isFunction";
 import merge from "lodash/merge";
 import md5 from "md5";
 //
@@ -23,6 +25,7 @@ export {
   False,
   has,
   isEmail,
+  isFunction,
   isString,
   md5,
   merge,
@@ -30,6 +33,7 @@ export {
   omit,
   paste,
   pick,
+  pickBy,
   prevent,
   ready,
   removeClass,

@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from "react-redux";
 import { has, paste } from "../../src/util";
 import { useIsMounted } from "../../src/hooks";
-
 //
 const MODE = "vgkysucatsmxldnhxhmtzz";
 //

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import { useColorMode } from "../app/store";
 import {
   motion,
   AnimatePresence,
@@ -13,12 +15,21 @@ import { useStateSwitch } from "../src/hooks";
 import DrawerDrag from "../components/DrawerDrag/DrawerDrag";
 //
 const DemoFramerMotion = () => {
+  const cm = useColorMode();
+  //
   const { isActive, toggle } = useStateSwitch();
   const { isActive: isActive_d, toggle: toggle_d } = useStateSwitch();
   //
   return (
     <div>
-      
+
+      <Button onClick={cm.toggleColorMode} variant="outlined" color="primary">toggle</Button>
+      <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+          assumenda, esse aut suscipit dolorem saepe voluptatibus fugiat ratione
+          nulla ea voluptas ducimus a, facere, vero explicabo? Sed vero quam
+          neque.
+        </p>
       <button onClick={toggle_d.on} className="p-4 bg-slate-500 text-white">
         open
       </button>
@@ -34,7 +45,7 @@ const DemoFramerMotion = () => {
         <motion.div
           layoutId="header.1"
           onClick={toggle.on}
-          className="bg-gray-500 hover:bg-gray-600 group cursor-pointer py-2 px-5 flex items-center justify-center"
+          className="w-fit bg-gray-500 hover:bg-gray-600 group cursor-pointer py-2 px-5 flex items-center justify-center"
           initial={{ borderRadius: 24 }}
         >
           <motion.span
