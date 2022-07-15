@@ -72,16 +72,16 @@ function App({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppEventsProvider>
-        <QueryProvider>
-          {/* <SessionProvider
+        <ReduxStoreProvider store={store}>
+          <QueryProvider>
+            {/* <SessionProvider
         session={session}
         refetchInterval={0}
         refetchOnWindowFocus={true}
       > */}
-          {/* <ResourceMainProvider> */}
-          {/* <AuthApiProvider> */}
-          <AuthSessionProvider>
-            <ReduxStoreProvider store={store}>
+            {/* <ResourceMainProvider> */}
+            {/* <AuthApiProvider> */}
+            <AuthSessionProvider>
               {/* <GravatarsProvider> */}
               <MuiThemeProvider>
                 {/* mui css reset */}
@@ -122,12 +122,12 @@ function App({
                 </AnimatePresence>
               </MuiThemeProvider>
               {/* </GravatarsProvider> */}
-            </ReduxStoreProvider>
-          </AuthSessionProvider>
-          {/* </AuthApiProvider> */}
-          {/* </ResourceMainProvider> */}
-          {/* </SessionProvider> */}
-        </QueryProvider>
+            </AuthSessionProvider>
+            {/* </AuthApiProvider> */}
+            {/* </ResourceMainProvider> */}
+            {/* </SessionProvider> */}
+          </QueryProvider>
+        </ReduxStoreProvider>
       </AppEventsProvider>
     </>
   );

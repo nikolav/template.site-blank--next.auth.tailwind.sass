@@ -12,7 +12,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 // import  { deepmerge } from "@mui/utils";
 
 ////
-// const defaultTheme = {};
+const defaultTheme = {
+  components: {},
+};
+//
 const primaryThemeColors = {};
 const darkThemeColors = {
   background: {

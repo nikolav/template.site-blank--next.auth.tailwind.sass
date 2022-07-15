@@ -20,6 +20,7 @@ export default function DrawerDrag({
   //
   onClose = noop,
   //
+  className = "", 
   offsetTop = 52,
   offsetToggle = 256,
   //
@@ -52,7 +53,7 @@ export default function DrawerDrag({
               }
               if (y < -offsetToggle) maximizeDrawer();
             }}
-            className="w-full sm:mx-[4px] sm:w-auto fixed z-[1] inset-x-0 rounded-t-3xl"
+            className={`w-full sm:mx-[4px] sm:w-auto fixed z-[1] inset-x-0 rounded-t-3xl ${className}`}
           >
             <motion.div
               variants={variantsDrawerWindow}
