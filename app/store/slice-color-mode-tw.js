@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { has, paste } from "../../src/util";
 import { useIsMounted } from "../../src/hooks";
 
+// observe mui theme changes
+import { useColorMode } from "../../app/store";
+
 //
 const MODE = "vgkysucatsmxldnhxhmtzz";
 //
@@ -56,6 +59,7 @@ export function useColorModeTW() {
   const colorMode = useSelector((state) => state.colorMode);
   const dispatch = useDispatch();
   //
+  const { mode: modeMui } = useColorMode();
   const mode = colorMode[MODE];
   useEffect(() => {
     if (isMounted) {
@@ -75,7 +79,7 @@ export function useColorModeTW() {
   //
   useEffect(() => {
     if (isMounted) {
-      if (mode === MODE_DARK) {
+      if (mode === MODE_DARK || "dark" === modeMui) {
         _addClassDark();
         localStorage.theme = "dark";
         return;
@@ -84,7 +88,7 @@ export function useColorModeTW() {
       _rmClassDark();
       localStorage.theme = "light";
     }
-  }, [mode, isMounted]);
+  }, [mode, modeMui, isMounted]);
   //
   const handle = paste(() => colorMode[MODE], {
     isDark: () => colorMode[MODE] === MODE_DARK,
