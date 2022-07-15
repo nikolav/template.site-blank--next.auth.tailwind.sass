@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { noop, prevent } from "../util";
 //
 // validation: object
@@ -24,7 +24,10 @@ export default function useInputSynced(validation, onSubmit = noop) {
   // event{}
   const sync = ({ target }) => setInput_(target.name, target.value);
   //
-  useEffect(() => runValidation_, [inputs]);
+  useEffect(() => {
+    setValid(fields.reduce(validateFields_, {}));
+    setOk(fields.every(validate_));
+  }, [inputs]);
   //
   return {
     //
@@ -44,13 +47,14 @@ export default function useInputSynced(validation, onSubmit = noop) {
     setInput: setInput_,
     //
     // handle form.onSubmit
-    handle: prevent(() => ok && onSubmit.call(null, inputs)),
+    // @return: boolean to form.clear
+    handle: prevent(
+      async () => ok && (await onSubmit.call(null, inputs)) && reset_()
+    ),
+    //
+    reset: reset_,
   };
   //
-  function runValidation_() {
-    setOk(fields.every(validate_));
-    setValid(fields.reduce(validateFields_, {}));
-  }
   function validateFields_(v, field) {
     v[field] = validate_(field);
     return v;
@@ -63,5 +67,8 @@ export default function useInputSynced(validation, onSubmit = noop) {
       v[name] = "";
       return v;
     }, {});
+  }
+  function reset_() {
+    setInput(initialValues);
   }
 }

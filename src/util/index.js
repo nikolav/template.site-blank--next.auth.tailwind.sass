@@ -6,7 +6,7 @@ import md5 from "md5";
 //
 const { eventListener, prevent, ready, s: select } = q;
 const { has, paste } = q.object;
-const { isString } = q.test;
+const { isString, isEmail } = q.test;
 const { noop } = q.func;
 const { sortByTimestampDesc, rand: arrayRand } = q.array;
 const { stripEndSlashes } = q.str;
@@ -22,6 +22,7 @@ export {
   eventListener,
   False,
   has,
+  isEmail,
   isString,
   md5,
   merge,
