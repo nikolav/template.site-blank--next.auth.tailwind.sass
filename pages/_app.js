@@ -35,9 +35,7 @@ const pageVariantsMotion = {
     transition: {
       duration: 0.12,
     },
-  },
-  transitionEnd: {
-    position: "initial",
+    transitionEnd: { position: "initial" }
   },
   out: {
     opacity: 0,

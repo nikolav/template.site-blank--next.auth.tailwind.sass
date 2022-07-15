@@ -4,6 +4,8 @@ import pick from "lodash/pick";
 import pickBy from "lodash/pickBy";
 import isFunction from "lodash/isFunction";
 import merge from "lodash/merge";
+import clamp from "lodash/clamp";
+import random from "lodash/random";
 import md5 from "md5";
 //
 const { eventListener, prevent, ready, s: select } = q;
@@ -21,6 +23,7 @@ const False = () => false;
 export {
   addClass,
   arrayRand,
+  clamp,
   eventListener,
   False,
   has,
@@ -35,6 +38,7 @@ export {
   pick,
   pickBy,
   prevent,
+  random,
   ready,
   removeClass,
   select,

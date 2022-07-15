@@ -33,12 +33,14 @@ export default function MuiThemeProvider({ children }) {
     [mode]
   );
   const colorMode = {
-    theme,
     mode,
-    toggleColorMode: () =>
-      setMode((mode) => ("dark" === mode ? "light" : "dark")),
-    setColorModeLight: () => setMode("light"),
+    theme,
+    // 
+    isDark: () => "dark" === mode,
+    isLight: () => "light" === mode,
     setColorModeDark: () => setMode("dark"),
+    setColorModeLight: () => setMode("light"),
+    toggleColorMode: () => setMode((m) => ("dark" === m ? "light" : "dark")),
   };
   //
   // update tailwind theme
