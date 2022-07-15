@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+//
+// https://unpkg.com/browse/tailwindcss@3.1.6/stubs/defaultConfig.stub.js
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -6,14 +9,7 @@ module.exports = {
     "./public/**/*.html",
   ],
   theme: {
-    extend: {
-      screens: {
-        tablet: "596px",
-        laptop: "1024px",
-        desktop: "1280px", 
-        huge: "1580px",
-      }
-    },
+    extend: {},
   },
   // https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
   darkMode: "class",

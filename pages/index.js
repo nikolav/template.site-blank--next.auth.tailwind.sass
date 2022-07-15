@@ -6,7 +6,6 @@ import Container from "@mui/material/Container";
 // import Button from "@mui/material/Button";
 //
 export default function Index() {
-  //
   return (
     <Container sx={{ width: 920 }}>
       <Link href="/page2">
@@ -22,7 +21,7 @@ export default function Index() {
         <a className="text-indigo-600 underline">demo-framer</a>
       </Link>
       <hr />
-      <Typography variant="h2" component="h1" >
+      <Typography variant="h2" component="h1">
         welcome @index
       </Typography>
     </Container>

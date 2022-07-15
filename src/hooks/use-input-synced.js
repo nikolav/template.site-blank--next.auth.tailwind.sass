@@ -1,24 +1,67 @@
-import { useState } from "react";
-export default function useInputSynced(initial = {}, middleware = null) {
-  const [inputs, setInput] = useState(initial);
+import { useState, useEffect } from "react";
+import { noop, prevent } from "../util";
+//
+// validation: object
+// @required; field--validation.func mappings
+//   { [key: string.input-name]: (value: string.input-value) => boolean.isValid }
+// {
+//   userName: (value) => 0 < value.length,
+//   email: (value) => isEmail(value),
+// }
+export default function useInputSynced(validation, onSubmit = noop) {
+  //
+  const fields = Object.keys(validation);
+  const initialValues = blankInitialValues_();
+  //
+  const [ok, setOk] = useState(null);
+  const [inputs, setInput] = useState(initialValues);
+  const [valid, setValid] = useState(initialValues);
+  //
   const setInput_ = (name, value) => {
-    const input_ = { name, value };
-    const newInput = null != middleware ? middleware(input_) : input_;
-    setInput((inputs) => ({ ...inputs, [newInput.name]: newInput.value }));
+    setInput((inputs) => ({ ...inputs, [name]: value }));
   };
+  //
+  // event{}
   const sync = ({ target }) => setInput_(target.name, target.value);
   //
-  return { sync, inputs, setInput: setInput_ };
+  useEffect(() => runValidation_, [inputs]);
+  //
+  return {
+    //
+    // handle .onChange: Function
+    sync,
+    //
+    // input values: object
+    values: inputs,
+    //
+    // validated input values: object
+    valid,
+    //
+    // all fields valid: boolean
+    ok,
+    //
+    // set field/value manualy
+    setInput: setInput_,
+    //
+    // handle form.onSubmit
+    handle: prevent(() => ok && onSubmit.call(null, inputs)),
+  };
+  //
+  function runValidation_() {
+    setOk(fields.every(validate_));
+    setValid(fields.reduce(validateFields_, {}));
+  }
+  function validateFields_(v, field) {
+    v[field] = validate_(field);
+    return v;
+  }
+  function validate_(field) {
+    return validation[field](inputs[field]);
+  }
+  function blankInitialValues_() {
+    return fields.reduce((v, name) => {
+      v[name] = "";
+      return v;
+    }, {});
+  }
 }
-/*
-
-// middleware demo; numbers only
-const reNums = /^\d+$/;
-const nums = (text) => Array.prototype.filter.call(text, ch => reNums.test(ch)).join("");
-const { inputs, sync } = useInputSynced(
-  { amount: 0 }, 
-  ({name, value}) => ({name, value: nums(value) }));
-//
-
-
-*/
