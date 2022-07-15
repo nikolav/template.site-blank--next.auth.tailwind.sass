@@ -63,12 +63,11 @@ export function useColorModeTW() {
         (!("theme" in localStorage) &&
           window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
-        _addClassDark();
-        dispatch(setColorMode(MODE_DARK));
-      } else {
-        _rmClassDark();
-        dispatch(setColorMode(MODE_LIGHT));
+        dispatch(setColorModeDark());
+        return;
       }
+      //
+      dispatch(setColorModeLight());
     }
   }, [isMounted]);
   //

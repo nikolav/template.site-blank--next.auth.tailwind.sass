@@ -1,13 +1,13 @@
+// https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 // import { useCallback, useState, useRef, useEffect } from "react";
 import Link from "next/link";
-// https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+// import Container from "@mui/material/Container";
+// import Button from "@mui/material/Button";
 //
 export default function Index() {
   return (
-    <Container fixed>
+    <>
       <Link href="/page2">
         <a>page-2</a>
       </Link>{" "}
@@ -23,6 +23,6 @@ export default function Index() {
       <Typography variant="h2" component="h1">
         welcome @index
       </Typography>
-    </Container>
+    </>
   );
 }
