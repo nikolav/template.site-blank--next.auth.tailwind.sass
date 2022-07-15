@@ -5,21 +5,25 @@ export const themeDark = {
       main: "#ffffff",
     },
     secondary: {
-      main: "#6a768c",
-    },
-    text: {
-      primary: "rgba(222,222,222,0.87)",
+      main: "#7c808a",
     },
     background: {
-      default: "#191920",
+      default: "#212121",
+    },
+    text: {
+      primary: "#eeeeee",
     },
     error: {
-      main: "#f78078",
+      main: "#ef9a9a",
+    },
+    success: {
+      main: "#66bb6a",
     },
   },
-  typography: {
-    fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
-    fontSize: 14,
+  props: {
+    MuiButtonBase: {
+      disableRipple: true,
+    },
   },
   overrides: {
     MuiSwitch: {
@@ -52,11 +56,6 @@ export const themeDark = {
         transition:
           "background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
       },
-    },
-  },
-  props: {
-    MuiButtonBase: {
-      disableRipple: true,
     },
   },
 };

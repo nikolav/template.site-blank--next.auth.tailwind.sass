@@ -2,13 +2,19 @@ export const themePrimary = {
   palette: {
     type: "light",
     primary: {
-      main: "#000016",
+      main: "#000000",
     },
     secondary: {
-      main: "#6a768c",
+      main: "#59636b",
     },
     text: {
-      primary: "rgba(41,41,41,0.87)",
+      primary: "#616161",
+    },
+    error: {
+      main: "#f78078",
+    },
+    background: {
+      default: "#eeeeee",
     },
   },
   typography: {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { noop, prevent } from "../util";
+import { noop, prevent, pickBy, isFunction } from "../util";
 //
 // validation: object
 // @required; field--validation.func mappings
@@ -8,7 +8,17 @@ import { noop, prevent } from "../util";
 //   userName: (value) => 0 < value.length,
 //   email: (value) => isEmail(value),
 // }
-export default function useInputSynced(validation, onSubmit = noop) {
+const defaultSubmit = {
+  onSubmit: noop,
+  onError: noop,
+};
+export default function useInputSynced(validation, submit = null) {
+  //
+
+  submit = {
+    ...defaultSubmit,
+    ...(isFunction(submit) ? { onSubmit: submit } : submit || {}),
+  };
   //
   const fields = Object.keys(validation);
   const initialValues = blankInitialValues_();
@@ -46,13 +56,26 @@ export default function useInputSynced(validation, onSubmit = noop) {
     // set field/value manualy
     setInput: setInput_,
     //
-    // handle form.onSubmit
+    // handle form.onSubmit|onSubmit.error
     // @return: boolean to form.clear
-    handle: prevent(async () => ok && (await onSubmit(inputs)) && reset_()),
+    handle: prevent(async () => {
+      setInputTrimmed_();
+      ok
+        ? (await submit.onSubmit(inputs)) && reset_()
+        : submit.onError(pickBy(valid, (value) => !value));
+    }),
     //
     reset: reset_,
   };
   //
+  function setInputTrimmed_() {
+    setInput(
+      fields.reduce((v, field) => {
+        v[field] = inputs[field].trim();
+        return v;
+      }, {})
+    );
+  }
   function validateFields_(v, field) {
     v[field] = validate_(field);
     return v;

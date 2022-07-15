@@ -3,11 +3,13 @@ import Link from "next/link";
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-// import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
+import { useColorMode } from "../app/store";
 //
 export default function Index() {
+  const cm = useColorMode();
   return (
-    <Container sx={{ width: 920 }}>
+    <Container fixed>
       <Link href="/page2">
         <a>page-2</a>
       </Link>{" "}
@@ -20,10 +22,14 @@ export default function Index() {
       <Link href="/demo-framer">
         <a>demo-framer</a>
       </Link>
-      <hr />
+
+      <Button onClick={cm.toggleColorMode} variant="outlined" color="primary">
+        theme
+      </Button>
       <Typography variant="h2" component="h1">
         welcome @index
       </Typography>
+      <pre className="text-xs">{JSON.stringify(cm.theme, null , 2)}</pre>
     </Container>
   );
 }

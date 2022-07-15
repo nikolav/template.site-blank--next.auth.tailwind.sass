@@ -10,7 +10,7 @@ import { noop } from "../../src/util";
 
 //
 const variantsDrawerWindow = {
-  minimize: { opacity: 0.82, y: "62%" },
+  minimize: { opacity: 0.82, y: "82vh" },
   maximize: { opacity: 1, y: 0 },
   out: { opacity: 0, y: "102%" },
 };
@@ -20,7 +20,7 @@ export default function DrawerDrag({
   //
   onClose = noop,
   //
-  className = "", 
+  className = "",
   offsetTop = 52,
   offsetToggle = 256,
   //
@@ -28,6 +28,7 @@ export default function DrawerDrag({
 }) {
   //
   const [drawerMode, setDrawerModeMode] = useState("maximize");
+  const isMinimized = () => "minimize" === drawerMode;
   const minimizeDrawer = () => setDrawerModeMode("minimize");
   const maximizeDrawer = () => setDrawerModeMode("maximize");
   //
@@ -45,6 +46,7 @@ export default function DrawerDrag({
             dragConstraints={{ top: 0, bottom: 0 }}
             style={{
               top: offsetTop,
+              pointerEvents: isMinimized() ? "none" : "all",
             }}
             onDragEnd={(_evt, { offset: { y } }) => {
               if (offsetToggle < y) {
@@ -60,6 +62,9 @@ export default function DrawerDrag({
               initial="out"
               exit="out"
               animate={drawerMode}
+              style={{
+                pointerEvents: "all",
+              }}
             >
               <div
                 className="bg-white cursor-grab pt-6 px-6 rounded-t-3xl relative"
@@ -73,19 +78,19 @@ export default function DrawerDrag({
                   <FaWindowMinimize
                     onClick={minimizeDrawer}
                     style={{ fontSize: 28, transformOrigin: "bottom" }}
-                    className="text-slate-800 opacity-40 hover:opacity-60 hover:scale-125 cursor-pointer absolute top-0 right-16 -translate-y-[122%] transition-transform"
+                    className="text-slate-800 opacity-60 hover:opacity-80 hover:scale-125 cursor-pointer absolute top-0 right-16 -translate-y-[122%] transition-transform"
                   />
                 ) : (
                   <FaRegWindowMaximize
                     onClick={maximizeDrawer}
                     style={{ fontSize: 28 }}
-                    className="text-slate-800 opacity-40 hover:opacity-60 hover:scale-110 cursor-pointer absolute top-0 right-16 -translate-y-[112%] transition-transform"
+                    className="text-slate-800 opacity-60 hover:opacity-80 hover:scale-110 cursor-pointer absolute top-0 right-16 -translate-y-[112%] transition-transform"
                   />
                 )}
                 <RiCloseCircleFill
                   onClick={onClose}
                   style={{ fontSize: 33 }}
-                  className="text-slate-800 opacity-40 hover:opacity-60 hover:scale-125 hover:text-red-600 cursor-pointer absolute top-0 right-4 -translate-y-[110%] transition-transform"
+                  className="text-slate-800 opacity-60 hover:opacity-80 hover:scale-125 hover:text-red-600 cursor-pointer absolute top-0 right-4 -translate-y-[110%] transition-transform"
                 />
 
                 {children}
