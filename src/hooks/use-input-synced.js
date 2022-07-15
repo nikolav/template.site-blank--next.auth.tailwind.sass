@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { noop, prevent } from "../util";
 //
 // validation: object
@@ -48,9 +48,7 @@ export default function useInputSynced(validation, onSubmit = noop) {
     //
     // handle form.onSubmit
     // @return: boolean to form.clear
-    handle: prevent(
-      async () => ok && (await onSubmit.call(null, inputs)) && reset_()
-    ),
+    handle: prevent(async () => ok && (await onSubmit(inputs)) && reset_()),
     //
     reset: reset_,
   };
