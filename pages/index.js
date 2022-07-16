@@ -1,20 +1,49 @@
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
-import { useCallback, useState, useRef, useEffect } from "react";
+// import { useMemo, useCallback, useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Typography from "@mui/material/Typography";
 // import Container from "@mui/material/Container";
 // import Button from "@mui/material/Button";
-import { useJQuery } from "../src/hooks";
+import Accordion from "../components/Accordion/Accordion";
 //
 export default function Index() {
-  const { jQuery: $, ready } = useJQuery();
-  useEffect(() => {
-    if (ready) {
-      console.log($("body [id]"));
-    }
-  }, [ready]);
   return (
     <>
+      <Accordion active="@2">
+        <Accordion item key="@1" header={<h2>nikolav.rs @1</h2>}>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            tenetur nobis quam. Ea vero corrupti mollitia explicabo ab molestiae
+            possimus dicta molestias, accusantium maxime aspernatur officiis
+            perferendis nulla. Commodi, nihil.
+          </p>
+        </Accordion>
+        <Accordion item key="@2" header={<h2>nikolav.rs @2</h2>}>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            tenetur nobis quam. Ea vero corrupti mollitia explicabo ab molestiae
+            possimus dicta molestias, accusantium maxime aspernatur officiis
+            perferendis nulla. Commodi, nihil.
+          </p>
+        </Accordion>
+        <Accordion item key="@3" header={<h2>nikolav.rs @3</h2>}>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            tenetur nobis quam. Ea vero corrupti mollitia explicabo ab molestiae
+            possimus dicta molestias, accusantium maxime aspernatur officiis
+            perferendis nulla. Commodi, nihil.
+          </p>
+        </Accordion>
+        <Accordion item key="@4" header={<h2>nikolav.rs @4</h2>}>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            tenetur nobis quam. Ea vero corrupti mollitia explicabo ab molestiae
+            possimus dicta molestias, accusantium maxime aspernatur officiis
+            perferendis nulla. Commodi, nihil.
+          </p>
+        </Accordion>
+      </Accordion>
+      <hr />
       <Link href="/page2">
         <a>page-2</a>
       </Link>{" "}
@@ -33,3 +62,4 @@ export default function Index() {
     </>
   );
 }
+

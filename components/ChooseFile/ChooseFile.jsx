@@ -8,8 +8,9 @@ export default function ChooseFile({
   //
   // pass app cache key to store file data under
   // {
-  //   file: File{};
-  //   data: string.dataUrl;
+  //   data   : string.dataUrl;
+  //   file   : File{};
+  //   target : Inputelement{}
   // }
   FILE = "wzcagoycqzyfxwfqrewzur",
   //
@@ -23,8 +24,8 @@ export default function ChooseFile({
   const ID = `ChooseFile.${id || appdata.id()}`;
   //
   const __ = useFileReader();
-  const onChange = (evt) => {
-    const file = evt?.target?.files[0];
+  const onChange = ({ target }) => {
+    const file = target?.files[0];
     //
     // evt.target.value doesnt change when component removes image
     // and if re-choosing the same image it wont work
@@ -32,7 +33,7 @@ export default function ChooseFile({
     // .. so that it can be removed with `evt.target.value = ""`
     //
     if (isMounted && file) {
-      appdata.set(FILE, { file });
+      appdata.set(FILE, { file, target });
       __.read(file);
     }
   };
