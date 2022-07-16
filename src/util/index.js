@@ -6,11 +6,12 @@ import isFunction from "lodash/isFunction";
 import merge from "lodash/merge";
 import clamp from "lodash/clamp";
 import random from "lodash/random";
+import isString from "lodash/isString";
 import md5 from "md5";
 //
 const { eventListener, prevent, ready, s: select } = q;
 const { has, paste } = q.object;
-const { isString, isEmail } = q.test;
+const { isEmail } = q.test;
 const { noop } = q.func;
 const { sortByTimestampDesc, rand: arrayRand } = q.array;
 const { stripEndSlashes } = q.str;
