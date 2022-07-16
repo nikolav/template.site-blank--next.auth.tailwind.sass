@@ -8,6 +8,7 @@ import clamp from "lodash/clamp";
 import random from "lodash/random";
 import isString from "lodash/isString";
 import md5 from "md5";
+import { nanoid } from "nanoid";
 //
 const { eventListener, prevent, ready, s: select } = q;
 const { has, paste } = q.object;
@@ -33,6 +34,7 @@ export {
   isString,
   md5,
   merge,
+  nanoid,
   noop,
   omit,
   paste,

@@ -21,7 +21,6 @@ export default function useFileReader() {
     //
     data: dataUrl,
   };
-
   //
   function read(file) {
     try {
