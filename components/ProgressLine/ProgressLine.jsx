@@ -23,7 +23,7 @@ const coords = {
 };
 ////
 ////
-const AnimateLine = ({
+const ProgressLine = ({
   //
   //
   isActive = true,
@@ -100,4 +100,4 @@ const AnimateLine = ({
   );
 };
 
-export default AnimateLine;
+export default ProgressLine;

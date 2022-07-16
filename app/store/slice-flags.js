@@ -45,6 +45,7 @@ export function useFlags() {
     debug: () => JSON.stringify(flags, null, 2),
     // 
     // general flags api
+    isOn: (name) => true === flags[name],
     off: (name) => dispatch(toggleFlagOff(name)),
     on: (name) => dispatch(toggleFlagOn(name)),
     toggle: (name) => dispatch(toggleFlag(name)),
