@@ -46,8 +46,11 @@ const AnimateLine = ({
   //
   round = false,
   //
-  // svg props
-  ...rest
+  // apply container classes; postion, etc.
+  className = "",
+  //
+  // add svg props @<line>
+  ...restSvgProps
 }) => {
   //
   const transition = {
@@ -76,6 +79,7 @@ const AnimateLine = ({
             padding: 0,
             width,
           }}
+          className={`${className}`}
         >
           <motion.line
             y1="50%"
@@ -88,7 +92,7 @@ const AnimateLine = ({
             stroke={color}
             strokeWidth={height}
             strokeLinecap={true === round ? "round" : "butt"}
-            {...rest}
+            {...restSvgProps}
           />
         </motion.svg>
       )}

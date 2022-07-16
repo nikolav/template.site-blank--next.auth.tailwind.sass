@@ -4,9 +4,15 @@ import Link from "next/link";
 import Typography from "@mui/material/Typography";
 // import Container from "@mui/material/Container";
 // import Button from "@mui/material/Button";
-
+import { useJQuery } from "../src/hooks";
 //
 export default function Index() {
+  const { jQuery: $, ready } = useJQuery();
+  useEffect(() => {
+    if (ready) {
+      console.log($("body [id]"));
+    }
+  }, [ready]);
   return (
     <>
       <Link href="/page2">
@@ -21,7 +27,7 @@ export default function Index() {
       <Link href="/demo-framer">
         <a>demo-framer</a>
       </Link>
-      <Typography variant="h2" component="h1">
+      <Typography id="t1" variant="h2" component="h1">
         welcome @index
       </Typography>
     </>

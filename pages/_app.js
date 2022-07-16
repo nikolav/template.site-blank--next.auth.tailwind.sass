@@ -19,6 +19,7 @@ import { store } from "../app/store/redux";
 import { ToastContainer } from "react-toastify";
 import PortalOverlays from "../components/PortalOverlays";
 //
+import { LoaderBars } from "../components/loaders";
 //
 // import { ResourceMainProvider } from "../app/resource";
 //
@@ -83,6 +84,7 @@ function App({
               <MuiThemeProvider>
                 {/* mui css reset */}
                 <CssBaseline />
+                {/*  */}
                 <JQueryProvider>
                   {/*  */}
                   {/* toasts */}
@@ -118,6 +120,10 @@ function App({
                       <Component {...pageProps} />
                     </motion.div>
                   </AnimatePresence>
+                  {/*  */}
+                  {/* flags app-processing status */}
+                  <LoaderBars />
+                  {/*  */}
                 </JQueryProvider>
               </MuiThemeProvider>
               {/* </GravatarsProvider> */}

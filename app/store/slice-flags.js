@@ -5,9 +5,12 @@ import { paste } from "../../src/util";
 //
 export const FLAG_TEST = "xjxjrdhdhly";
 export const FLAG_BLOKUI = "mqyrosmowbb";
+export const FLAG_APP_IS_PROCESSING = "gyevhvbasod";
+//
 const initialState = {
   [FLAG_TEST]: null,
   [FLAG_BLOKUI]: false,
+  [FLAG_APP_IS_PROCESSING]: false,
 };
 
 export const flagsSlice = createSlice({
@@ -40,9 +43,16 @@ export function useFlags() {
   //
   const handle = paste((name) => flags[name], {
     debug: () => JSON.stringify(flags, null, 2),
+    // 
+    // general flags api
     off: (name) => dispatch(toggleFlagOff(name)),
     on: (name) => dispatch(toggleFlagOn(name)),
     toggle: (name) => dispatch(toggleFlag(name)),
+    //
+    // handle app-processing status
+    setProcessingOn: () => dispatch(toggleFlagOn(FLAG_APP_IS_PROCESSING)),
+    setProcessingOff: () => dispatch(toggleFlagOff(FLAG_APP_IS_PROCESSING)),
+    isProcessing: () => flags[FLAG_APP_IS_PROCESSING],
   });
   //
   return handle;
