@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Details from "../Details/Details";
-import { filter, map, reduce } from "../../src/util";
+import { noop, filter, map, reduce } from "../../src/util";
 
 export default function Accordion({
   //
@@ -14,6 +14,11 @@ export default function Accordion({
   //
   // flag accordion children to render
   item = false,
+  //
+  // run callback @tabs.toggle
+  // pass state{} with closed/open tabs
+  //   { [key: string.key]: isOpen.boolean }
+  onToggle = noop,
   //
   children,
   //
@@ -32,6 +37,8 @@ export default function Accordion({
       ),
     [items]
   );
+  // accordion state
+  // { [key: string.unique]: isOpen.boolean }
   const [tabs, setTabs] = useState(
     reduce(
       items,
@@ -43,6 +50,8 @@ export default function Accordion({
       {}
     )
   );
+  //
+  useEffect(onToggle.bind(null, tabs), [tabs]);
   //
   return (
     !item && (
