@@ -23,13 +23,13 @@ const coords = {
 };
 ////
 ////
-const ProgressLine = ({
+const ProgressBar = ({
   //
   //
   isActive = true,
   //
   // [0..100]
-  value = 12,
+  progress = 12,
   //
   // left|center|right
   origin = defaultOrigin,
@@ -61,8 +61,8 @@ const ProgressLine = ({
   //
   const [toValue, setToValue] = useState();
   useEffect(() => {
-    isActive && setToValue(value);
-  }, [value]);
+    isActive && setToValue(progress);
+  }, [progress]);
   //
   return (
     <AnimatePresence initial={false}>
@@ -100,4 +100,4 @@ const ProgressLine = ({
   );
 };
 
-export default ProgressLine;
+export default ProgressBar;

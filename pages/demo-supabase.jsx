@@ -8,18 +8,19 @@ const DemoSupabase = () => {
   //
   useEffect(() => {
     (async () =>
-      await supabase.from("appdata").select("name, value").eq("app_id", 2))().then(
-      ({ data }) => appdata.set(TEST, data)
-    );
+      await supabase
+        .from("appdata")
+        .select("name, value")
+        .eq("app_id", 2))().then(({ data }) => appdata.set(TEST, data));
   }, []);
   return (
     <>
-          <Link href="/">
+      <Link href="/">
         <a className="underline text-indigo-600">index</a>
       </Link>
-    <div>
-      <pre className="text-xs">{appdata.debug()}</pre>
-    </div>
+      <div>
+        <pre className="text-xs">{appdata.debug()}</pre>
+      </div>
     </>
   );
 };

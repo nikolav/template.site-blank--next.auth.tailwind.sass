@@ -91,7 +91,7 @@ function App({
                   {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
                   <PortalOverlays>
                     <ToastContainer
-                      autoClose={4242}
+                      autoClose={4567}
                       closeOnClick
                       draggable
                       hideProgressBar
@@ -99,12 +99,15 @@ function App({
                       newestOnTop={false}
                       pauseOnFocusLoss
                       pauseOnHover
+                      // top-right, top-center, top-left,
+                      // bottom-right, bottom-center, bottom-left
+                      //   @toast.POSITION
                       position="top-right"
                       rtl={false}
                       //
                       // closeButton
                       // icon={false}
-                      // theme: light | dark | colored
+                      // theme=light|dark|colored
                     />
                   </PortalOverlays>
                   <AnimatePresence exitBeforeEnter initial={false}>

@@ -11,7 +11,43 @@ export default function DemoToastify() {
           <a className="underline text-indigo-600">index</a>
         </Link>{" "}
         <hr />
-        <button onClick={() => toast(Date.now(), { type: "info" })}>ok</button>
+        <button
+          // toast.dismiss --all
+          //
+          //   toast.promise(
+          //     resolveAfter3Sec,
+          //     {
+          //       pending: 'Promise is pending',
+          //       success: 'Promise resolved 👌',
+          //       error: 'Promise rejected 🤯'
+          //     }
+          // )
+          //
+          //   const response = await toast.promise(
+          //     fetch("A_URL"),
+          //     {
+          //       pending: 'Promise is pending',
+          //       success: 'Promise resolved 👌',
+          //       error: 'Promise rejected 🤯'
+          //     }
+          // );
+
+          onClick={() =>
+            // info, success, warning, error
+            //   promise, loading, update, done
+            toast(
+              // text|node|Component
+              // toast(<Msg />)
+              Date.now(),
+              // options
+              {
+                // type: "info"
+              }
+            )
+          }
+        >
+          ok
+        </button>
       </div>
     </>
   );

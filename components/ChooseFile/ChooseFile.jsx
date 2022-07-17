@@ -9,11 +9,12 @@ function ChooseFile(
   {
     // pass app cache key to store file data under
     // {
-    //   data:          dataUrl
     //   name:          string
-    //   type:          string
     //   size:          bytes
+    //   type:          string
     //   lastModified:  timestamp
+    //   file:          File{}
+    //   data:          dataUrl
     // }
     FILE = "wzcagoycqzyfxwfqrewzur",
     //
@@ -30,12 +31,6 @@ function ChooseFile(
   const __ = useFileReader();
   const onChange = ({ target }) => {
     const file = target?.files[0];
-    //
-    // evt.target.value doesnt change when component removes image
-    // and if re-choosing the same image it wont work
-    // .. handle .value somehow; send {file, target} to `.set`
-    // .. so that it can be removed with `evt.target.value = ""`
-    //
     if (file) {
       appdata.set(FILE, {
         ...pick(file, ["name", "lastModified", "size", "type"]),
