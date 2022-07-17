@@ -1,27 +1,31 @@
-import React, { useEffect } from "react";
-import { useFileReader, useIsMounted } from "../../src/hooks";
+import React, { useEffect, forwardRef } from "react";
+import { useFileReader } from "../../src/hooks";
 import { useAppData } from "../../app/store";
+import { pick } from "../../src/util";
+
 //
-export default function ChooseFile({
-  //
-  id,
-  //
-  // pass app cache key to store file data under
-  // {
-  //   data   : string.dataUrl;
-  //   file   : File{};
-  //   target : Inputelement{}
-  // }
-  FILE = "wzcagoycqzyfxwfqrewzur",
-  //
-  children,
-  //
-  ...rest
-  //
-}) {
-  const isMounted = useIsMounted();
+export default forwardRef(ChooseFile);
+function ChooseFile(
+  {
+    // pass app cache key to store file data under
+    // {
+    //   data:          dataUrl
+    //   name:          string
+    //   type:          string
+    //   size:          bytes
+    //   lastModified:  timestamp
+    // }
+    FILE = "wzcagoycqzyfxwfqrewzur",
+    //
+    children,
+    //
+    ...rest
+    //
+  },
+  ref
+) {
   const appdata = useAppData();
-  const ID = `ChooseFile.${id || appdata.id()}`;
+  const ID = `ChooseFile.${appdata.id()}`;
   //
   const __ = useFileReader();
   const onChange = ({ target }) => {
@@ -32,8 +36,11 @@ export default function ChooseFile({
     // .. handle .value somehow; send {file, target} to `.set`
     // .. so that it can be removed with `evt.target.value = ""`
     //
-    if (isMounted && file) {
-      appdata.set(FILE, { file, target });
+    if (file) {
+      appdata.set(FILE, {
+        ...pick(file, ["name", "lastModified", "size", "type"]),
+        file,
+      });
       __.read(file);
     }
   };
@@ -48,6 +55,7 @@ export default function ChooseFile({
     <label htmlFor={ID} {...rest}>
       {children}
       <input
+        ref={ref}
         onChange={onChange}
         type="file"
         id={ID}

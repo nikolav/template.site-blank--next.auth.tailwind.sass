@@ -15,7 +15,7 @@ import each from "lodash/each";
 import filter from "lodash/filter";
 //
 const { add: addClass, rm: removeClass } = q.class;
-const { eventListener, prevent, ready, s: select } = q;
+const { eventListener, prevent, ready, s: select, type } = q;
 const { has, paste } = q.object;
 const { isEmail } = q.test;
 const { noop } = q.func;
@@ -56,4 +56,5 @@ export {
   sortByTimestampDesc,
   stripEndSlashes,
   True,
+  type,
 };
