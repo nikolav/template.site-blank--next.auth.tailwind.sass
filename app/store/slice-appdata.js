@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from "react-redux";
-import { paste, has } from "../../src/util";
+import { paste, has, nanoid } from "../../src/util";
 
 //
 export const TEST = "fktzzfpmzpb";
@@ -50,11 +50,15 @@ export function useAppData() {
   //
   const handle = paste((name) => appdata[name], {
     debug: () => JSON.stringify(appdata, null, 2),
+    //
+    id: nanoid,
+    //
     clear: (name, EMPTY = null) => dispatch(clearAppDataEntry({ name, EMPTY })),
     has: (name) => has(appdata, name),
     ls: () => Object.keys(appdata),
-    set: (name, value) => dispatch(setAppData({ name, value })),
     rm: (name) => dispatch(removeAppData(name)),
+    set: (name, value) => dispatch(setAppData({ name, value })),
+    // 
   });
   //
   return handle;

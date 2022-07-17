@@ -1,38 +1,59 @@
+import { nanoid } from "nanoid";
+import md5 from "md5";
 import q from "nikolav-q";
+//
+import assign from "lodash/assign";
+import clamp from "lodash/clamp";
+import each from "lodash/each";
+import filter from "lodash/filter";
+import isFunction from "lodash/isFunction";
+import isString from "lodash/isString";
+import map from "lodash/map";
+import merge from "lodash/merge";
+import now from "lodash/now";
 import omit from "lodash/omit";
 import pick from "lodash/pick";
 import pickBy from "lodash/pickBy";
-import isFunction from "lodash/isFunction";
-import merge from "lodash/merge";
-import clamp from "lodash/clamp";
 import random from "lodash/random";
-import md5 from "md5";
+import reduce from "lodash/reduce";
+import sample from "lodash/sample";
+import shuffle from "lodash/shuffle";
+import keys from "lodash/keys";
 //
-const { eventListener, prevent, ready, s: select } = q;
-const { has, paste } = q.object;
-const { isString, isEmail } = q.test;
-const { noop } = q.func;
-const { sortByTimestampDesc, rand: arrayRand } = q.array;
-const { stripEndSlashes } = q.str;
 const { add: addClass, rm: removeClass } = q.class;
+const { eventListener, prevent, ready, s: select, type } = q;
+const { has } = q.object;
+const { isEmail } = q.test;
+const { noop } = q.func;
+const { sortByTimestampDesc } = q.array;
+const { stripEndSlashes } = q.str;
 
 //
-const True = () => true;
+const arrayRand = sample;
 const False = () => false;
+const paste = assign;
+const True = () => true;
 
 export {
   addClass,
   arrayRand,
+  assign,
   clamp,
+  each,
   eventListener,
   False,
+  filter,
   has,
   isEmail,
   isFunction,
   isString,
+  keys,
+  map,
   md5,
   merge,
+  nanoid,
   noop,
+  now,
   omit,
   paste,
   pick,
@@ -40,9 +61,13 @@ export {
   prevent,
   random,
   ready,
+  reduce,
   removeClass,
+  sample,
   select,
+  shuffle,
   sortByTimestampDesc,
   stripEndSlashes,
   True,
+  type,
 };

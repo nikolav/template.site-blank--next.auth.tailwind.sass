@@ -1,8 +1,3 @@
-$color-primary: #1e2;
-
-.green-01 {
-  color: $color-primary;
-}
 
 // https://codepen.io/devstreak/pen/dMYgeO
 .scrollbar-thin::-webkit-scrollbar-track {
@@ -15,7 +10,7 @@ $color-primary: #1e2;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: #334155;
+  background-color: #0c0d0f;
 }
 
 @keyframes blockuiRotation {

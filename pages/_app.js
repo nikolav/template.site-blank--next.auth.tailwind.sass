@@ -9,6 +9,7 @@ import {
   // GravatarsProvider,
   // AuthApiProvider,
   AppEventsProvider,
+  JQueryProvider,
 } from "../app/providers";
 //
 import { Provider as ReduxStoreProvider } from "react-redux";
@@ -18,6 +19,7 @@ import { store } from "../app/store/redux";
 import { ToastContainer } from "react-toastify";
 import PortalOverlays from "../components/PortalOverlays";
 //
+import { LoaderBars } from "../components/loaders";
 //
 // import { ResourceMainProvider } from "../app/resource";
 //
@@ -31,17 +33,19 @@ import "react-toastify/dist/ReactToastify.min.css";
 const pageVariantsMotion = {
   in: {
     opacity: 1,
-    position: "absolute",
     transition: {
-      duration: 0.12,
+      duration: 0.24,
     },
-    transitionEnd: { position: "initial" }
+    position: "initial",
+    zindex: "initial",
   },
   out: {
     opacity: 0,
     transition: {
-      duration: 0.12,
+      duration: 0.24,
     },
+    position: "absolute",
+    zIndex: -1,
   },
 };
 
@@ -85,39 +89,49 @@ function App({
                 {/* mui css reset */}
                 <CssBaseline />
                 {/*  */}
-                {/* toasts */}
-                {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
-                <PortalOverlays>
-                  <ToastContainer
-                    autoClose={4242}
-                    closeOnClick
-                    draggable
-                    hideProgressBar
-                    limit={3}
-                    newestOnTop={false}
-                    pauseOnFocusLoss
-                    pauseOnHover
-                    position="top-right"
-                    rtl={false}
-                    //
-                    // closeButton
-                    // icon={false}
-                    // theme: light | dark | colored
-                  />
-                </PortalOverlays>
-                <AnimatePresence initial={false}>
-                  <motion.div
-                    key={route}
-                    initial="out"
-                    animate="in"
-                    exit="out"
-                    variants={pageVariantsMotion}
-                  >
-                    {/*  */}
-                    {/* page content */}
-                    <Component {...pageProps} />
-                  </motion.div>
-                </AnimatePresence>
+                <JQueryProvider>
+                  {/*  */}
+                  {/* toasts */}
+                  {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
+                  <PortalOverlays>
+                    <ToastContainer
+                      autoClose={4567}
+                      closeOnClick
+                      draggable
+                      hideProgressBar
+                      limit={3}
+                      newestOnTop={false}
+                      pauseOnFocusLoss
+                      pauseOnHover
+                      // top-right, top-center, top-left,
+                      // bottom-right, bottom-center, bottom-left
+                      //   @toast.POSITION
+                      position="top-right"
+                      rtl={false}
+                      //
+                      // closeButton
+                      // icon={false}
+                      // theme=light|dark|colored
+                    />
+                  </PortalOverlays>
+                  <AnimatePresence initial={false}>
+                    <motion.div
+                      key={route}
+                      initial="out"
+                      animate="in"
+                      exit="out"
+                      variants={pageVariantsMotion}
+                    >
+                      {/*  */}
+                      {/* page content */}
+                      <Component {...pageProps} />
+                    </motion.div>
+                  </AnimatePresence>
+                  {/*  */}
+                  {/* flags app-processing status */}
+                  <LoaderBars />
+                  {/*  */}
+                </JQueryProvider>
               </MuiThemeProvider>
               {/* </GravatarsProvider> */}
             </AuthSessionProvider>

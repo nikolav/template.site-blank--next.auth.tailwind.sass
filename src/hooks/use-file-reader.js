@@ -7,31 +7,32 @@ import { useState } from "react";
 export default function useFileReader() {
   let reader;
 
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [dataUrl, setDataUrl] = useState(null);
+  const [error, setError] = useState(null);
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   //
-  // return [read, { error, loading, dataUrl }];
   return {
     read,
-    //
-    loading,
-    error,
-    //
     data: dataUrl,
+    file,
+    //
+    error,
+    loading,
   };
-
   //
   function read(file) {
+    //
+    reset_();
+    setLoading(true);
+    setFile(file);
+    //
     try {
-      reset_();
-      setLoading(true);
       reader = new FileReader();
-
       reader.addEventListener("error", loading_);
       reader.addEventListener("load", loading_);
-
+      //
       reader.readAsDataURL(file);
     } catch (error_) {
       setError(error_);
@@ -40,9 +41,10 @@ export default function useFileReader() {
     }
   }
   function reset_() {
-    setError(null);
-    setLoading(false);
     setDataUrl(null);
+    setError(null);
+    setFile(null);
+    setLoading(false);
   }
   //
   function loading_(evt) {

@@ -15,6 +15,7 @@ import useLocalStorage from "./use-local-storage";
 import useGravatar from "./use-gravatar";
 import { useAuthApi } from "./use-auth-api";
 import useAppEvents from "./use-events";
+import { useJQuery } from "./use-jquery";
 //
 export {
   useAuthApi,
@@ -24,6 +25,7 @@ export {
   useGravatar,
   useInputSynced,
   useIsMounted,
+  useJQuery,
   useLocalStorage,
   useQueryMain,
   useQueryResource,
