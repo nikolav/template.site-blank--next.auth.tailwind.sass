@@ -8,7 +8,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Slider from "../components/Slider/Slider";
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 export default function Index() {
-  const [value, setValue] = useState(4);
+  const [value, setValue] = useState(14);
   return (
     <>
       <div className="bg-slate-800 text-slate-200 flex items-center justify-center">
@@ -28,7 +28,7 @@ export default function Index() {
         </Toolbar>
       </div>
       <div className="p-4">
-        <Slider onChange={setValue} value={value} values={[0, 10]} />
+        <Slider value={value} values={[11, 22]} onChange={setValue} />
       </div>
       <pre>{value}</pre>
     </>

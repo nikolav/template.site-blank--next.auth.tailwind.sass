@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, transform, AnimatePresence } from "framer-motion";
 import { noop, clamp } from "../../src/util";
-import { useStateSwitch, useIsMounted } from "../../src/hooks";
+import { useStateSwitch } from "../../src/hooks";
 //
 //  @demo; https://codesandbox.io/s/bold-hill-stmnwk?file=/src/App.js
-export default function Slider({
+const Slider = ({
   //
-  value = 50,
+  value = 0,
   // clamp input to values
-  values = [0, 100],
-  // horiz.
+  values = [0, 1],
+  // horiz. size
   size = 512,
-  // handle radius
+  // thumb radius
   r = 24,
   // track widht
   width = 12,
@@ -22,7 +22,7 @@ export default function Slider({
   // track color
   bg = "lightgray",
   // transition duration
-  duration = 678,
+  duration = 567,
   // spring | tween
   animation = "tween",
   // @value
@@ -34,8 +34,7 @@ export default function Slider({
   className = "",
   // <circle> svg props
   ...rest
-}) {
-  const m = useIsMounted();
+}) => {
   //
   const value_ = clamp(value, ...values);
   // track input value
@@ -195,4 +194,6 @@ export default function Slider({
       />
     </svg>
   );
-}
+};
+
+export default Slider;
