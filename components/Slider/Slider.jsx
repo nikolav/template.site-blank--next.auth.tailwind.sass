@@ -53,6 +53,7 @@ const Slider = ({
   const Xviewport = [x1Offset, size - x1Offset];
   //
   const t_vx = transform(values, [handleOffsetLeft, handleOffsetRight]);
+  // const t_xv = transform([handleOffsetLeft, handleOffsetRight], values);
   const t_client_v = transform(Xviewport, values);
   const t_v_client = transform(values, Xviewport);
   //
@@ -61,6 +62,8 @@ const Slider = ({
   //
   // @click.bg
   const clientXToStateValue = (evt) => {
+    // calculate value @click.bg
+    // based on canvas.x
     const newPos = clamp(
       evt.clientX - refSliderSvg.current.getBoundingClientRect().left,
       ...Xviewport
@@ -142,7 +145,7 @@ const Slider = ({
               opacity: 0,
               transition: {
                 ...animationType,
-                duration: duration / 1000 / 1.22,
+                duration: duration / 1000 / 1.23,
               },
             }}
             onAnimationComplete={toggleIsFlash.off}
@@ -165,7 +168,7 @@ const Slider = ({
         r={r}
         fill={color}
         style={{
-          cursor: "pointer",
+          cursor: "grab",
         }}
         onDragEnd={() => {
           const sliderLeft = refSliderSvg.current.getBoundingClientRect().left;
