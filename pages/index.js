@@ -5,7 +5,12 @@ import Toolbar from "@mui/material/Toolbar";
 // @todo.slider
 //   https://codesandbox.io/s/bold-hill-stmnwk?file=/src/App.js
 //
-import { ProgressBar, Slider, ProgressRing } from "../components";
+import {
+  ProgressBar,
+  ProgressBarVertical,
+  Slider,
+  ProgressRing,
+} from "../components";
 import { random } from "../src/util";
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 export default function Index() {
@@ -43,9 +48,11 @@ export default function Index() {
       <div className="w-32 h-32">
         <ProgressRing
           rounded={false}
-          width={45}
+          width={44}
           allowDecrease
           progress={value}
+          color="steelblue"
+          bg="rgba(0,0,0,.045)"
         />
       </div>
       <ProgressBar
@@ -55,6 +62,11 @@ export default function Index() {
         progress={value}
         className="fixed top-0 inset-0"
       />
+      <div className="**bg-slate-300 p-0 m-0 fixed right-0 inset-y-0">
+        <ProgressBarVertical
+          progress={value}
+        />
+      </div>
     </>
   );
 }

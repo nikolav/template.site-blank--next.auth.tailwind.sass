@@ -9,6 +9,7 @@ import OverlayHover from "./OverlayHover/OverlayHover";
 import Panel from "./Panel/Panel";
 import PortalOverlays from "./PortalOverlays";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import ProgressBarVertical from "./ProgressBarVertical/ProgressBarVertical";
 import ProgressRing from "./ProgressRing/ProgressRing";
 import Rotation from "./Rotation/Rotation";
 import Slider from "./Slider/Slider";
@@ -26,6 +27,7 @@ export {
   Panel,
   PortalOverlays,
   ProgressBar,
+  ProgressBarVertical,
   ProgressRing,
   Rotation,
   Slider,
