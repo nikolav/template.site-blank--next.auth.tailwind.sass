@@ -20,9 +20,11 @@ import random from "lodash/random";
 import reduce from "lodash/reduce";
 import sample from "lodash/sample";
 import shuffle from "lodash/shuffle";
+// https://lodash.com/docs/4.17.15#transform
+import transform from "lodash/transform";
 //
 const { add: addClass, rm: removeClass } = q.class;
-const { eventListener, prevent, ready, s: select, type, on, off } = q;
+const { eventListener, prevent, ready, s: select, type } = q;
 const { has } = q.object;
 const { isEmail } = q.test;
 // const { noop } = q.func;
@@ -55,9 +57,7 @@ export {
   nanoid,
   noop,
   now,
-  off,
   omit,
-  on,
   paste,
   pick,
   pickBy,
@@ -71,6 +71,7 @@ export {
   shuffle,
   sortByTimestampDesc,
   stripEndSlashes,
+  transform,
   True,
   type,
 };

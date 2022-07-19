@@ -10,12 +10,17 @@ import {
   ProgressBarVertical,
   Slider,
   ProgressRing,
+  Modal,
 } from "../components";
+import { useStateSwitch } from "../src/hooks";
 import { random } from "../src/util";
+//
 // https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 export default function Index() {
   const [value, setValue] = useState(14);
+  const { isActive, toggle } = useStateSwitch();
   const values = [0, 100];
+
   return (
     <>
       <div className="bg-slate-800 text-slate-200 flex items-center justify-center">
@@ -38,9 +43,30 @@ export default function Index() {
         onClick={() => {
           setValue(random(...values));
         }}
+        variant="outlined"
       >
         go
       </Button>
+      <Button variant="outlined" onClick={toggle}>
+        modal.toggle
+      </Button>
+      <Modal isActive={isActive} onClose={toggle.off}>
+        <div className="p-12">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
+            veritatis quam? Inventore voluptatibus consectetur tenetur placeat,
+            cum, labore voluptas excepturi incidunt unde quod alias sed.
+            Aspernatur placeat quibusdam ducimus modi!
+          </p>
+          <Button
+            className="block mx-auto w-fit mt-4"
+            variant="outlined"
+            onClick={toggle.off}
+          >
+            ok, close
+          </Button>
+        </div>
+      </Modal>
       <div className="p-4">
         <Slider value={value} values={values} onChange={setValue} />
       </div>
@@ -63,9 +89,7 @@ export default function Index() {
         className="fixed top-0 inset-0"
       />
       <div className="**bg-slate-300 p-0 m-0 fixed right-0 inset-y-0">
-        <ProgressBarVertical
-          progress={value}
-        />
+        <ProgressBarVertical progress={value} />
       </div>
     </>
   );
