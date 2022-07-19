@@ -81,6 +81,7 @@ const ProgressBarVertical = ({
     setP(normalizeProgress(progress));
   }, [progress, allowDecrease]);
   //
+  // canvas.setup @init
   useEffect(() => {
     if (isMounted$ && refCanvas?.current)
       setHeight(refCanvas.current.getBoundingClientRect().height);
@@ -90,7 +91,6 @@ const ProgressBarVertical = ({
     onProgress(p$);
   }, [p$]);
   //
-
   return (
     <svg
       ref={refCanvas}
