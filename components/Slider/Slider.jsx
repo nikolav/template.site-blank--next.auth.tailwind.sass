@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, transform, AnimatePresence } from "framer-motion";
 import { noop, clamp } from "../../src/util";
 import { useStateSwitch } from "../../src/hooks";
+import modcss from "./Slider.module.css";
 //
 //  @demo; https://codesandbox.io/s/bold-hill-stmnwk?file=/src/App.js
 const Slider = ({
@@ -29,6 +30,7 @@ const Slider = ({
   onChange = noop,
   // flash brief indicator @value
   flash = true,
+  //
   flashOpacity = 0.51,
   // add classes to <svg>
   className = "",
@@ -43,6 +45,14 @@ const Slider = ({
   const [pos, setPos] = useState([]);
   // signal flash presence
   const { isActive: isFlash, toggle: toggleIsFlash } = useStateSwitch(false);
+  const { isActive: isThumbHover, toggle: thumbHover } = useStateSwitch(false);
+  const { isActive: isThumbDrag, toggle: thumbDrag } = useStateSwitch(false);
+  const { isActive: isTrackHover, toggle: trackHover } = useStateSwitch(false);
+  const { isActive: isTrackActive, toggle: trackActive } =
+    useStateSwitch(false);
+  //
+  const refSliderSvg = useRef();
+  const refCircle = useRef();
   //
   const sizeHalf = size / 2;
   const height = Math.max(2 * r, width);
@@ -56,9 +66,6 @@ const Slider = ({
   // const t_xv = transform([handleOffsetLeft, handleOffsetRight], values);
   const t_client_v = transform(Xviewport, values);
   const t_v_client = transform(values, Xviewport);
-  //
-  const refSliderSvg = useRef();
-  const refCircle = useRef();
   //
   // @click.bg
   const clientXToStateValue = (evt) => {
@@ -101,12 +108,7 @@ const Slider = ({
     <svg
       ref={refSliderSvg}
       viewBox={`0 0 ${size} ${height}`}
-      className={className}
-      style={{
-        margin: 0,
-        padding: 0,
-        display: "inline-block",
-      }}
+      className={`${modcss.sliderCanvas} ${className}`}
       height={height}
       width={size}
       {...rest}
@@ -121,8 +123,14 @@ const Slider = ({
         x2={size - x1Offset}
         y1={heightHalf}
         y2={heightHalf}
-        style={{ cursor: "pointer" }}
         onClick={clientXToStateValue}
+        onMouseOver={trackHover.on}
+        onMouseLeave={trackHover.off}
+        onMouseDown={trackActive.on}
+        onMouseUp={trackActive.off}
+        className={`${modcss.sliderTrack} ${
+          isTrackHover ? modcss.trackHover : ""
+        } ${isTrackActive ? modcss.trackActive : ""}`}
       />
       {/*  */}
       <AnimatePresence initial={false}>
@@ -135,10 +143,7 @@ const Slider = ({
             x2={pos[1] ?? 0}
             y1={heightHalf}
             y2={heightHalf}
-            style={{
-              cursor: "pointer",
-              pointerEvents: "none",
-            }}
+            className={modcss.sliderTrackFlash}
             initial={{ opacity: flashOpacity }}
             animate={{
               x1: pos[1] ?? 0,
@@ -167,9 +172,11 @@ const Slider = ({
         cy={heightHalf}
         r={r}
         fill={color}
-        style={{
-          cursor: "grab",
-        }}
+        className={`${modcss.sliderThumb} ${
+          isThumbHover ? modcss.thumbHover : ""
+        } ${isThumbDrag ? modcss.thumbDrag : ""}`}
+        onMouseOver={thumbHover.on}
+        onMouseLeave={thumbHover.off}
         onDragEnd={() => {
           const sliderLeft = refSliderSvg.current.getBoundingClientRect().left;
           const { left } = refCircle.current.getBoundingClientRect();
@@ -177,10 +184,16 @@ const Slider = ({
           const newPos = Math.round(left - sliderLeft + r);
           //
           setV(t_client_v(newPos));
+          thumbDrag.off();
         }}
         // prevent flash @drag
         // reset flash positions
-        onDragStart={() => flash && setPos([])}
+        onDragStart={() => {
+          flash && setPos([]);
+          //
+          thumbDrag.on();
+          thumbHover.off();
+        }}
         //
         // @init
         initial={{ x: t_vx(value_) }}
