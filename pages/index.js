@@ -1,27 +1,27 @@
-// https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 import { useMemo, useCallback, useState, useRef, useEffect } from "react";
 import Link from "next/link";
-// import Typography from "@mui/material/Typography";
-// import Container from "@mui/material/Container";
-// import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
-// import { useJQuery } from "../src/hooks";
-
+// @todo.slider
+//   https://codesandbox.io/s/bold-hill-stmnwk?file=/src/App.js
 //
+import {
+  ProgressBar,
+  ProgressBarVertical,
+  Slider,
+  ProgressRing,
+} from "../components";
+import { random } from "../src/util";
+// https://next-auth.js.org/getting-started/example#frontend---add-react-hook
 export default function Index() {
-  // const { jQuery: $, ready } = useJQuery();
-  // const [res, setRes] = useState();
-  // useEffect(() => {
-  //   if (ready) {
-  //     setRes({ keys: 122333 });
-  //   }
-  // }, [ready]);
+  const [value, setValue] = useState(14);
+  const values = [0, 100];
   return (
     <>
       <div className="bg-slate-800 text-slate-200 flex items-center justify-center">
         <Toolbar className="space-x-4">
           <Link href="/page2">
-            <a className="hover:underline">page-2</a>
+            <a className="hover:underline">demo-page-2</a>
           </Link>
           <Link href="/demo-supabase">
             <a className="hover:underline">demo-supabase</a>
@@ -33,6 +33,39 @@ export default function Index() {
             <a className="hover:underline">demo-framer</a>
           </Link>
         </Toolbar>
+      </div>
+      <Button
+        onClick={() => {
+          setValue(random(...values));
+        }}
+      >
+        go
+      </Button>
+      <div className="p-4">
+        <Slider value={value} values={values} onChange={setValue} />
+      </div>
+      <pre>{value}</pre>
+      <div className="w-32 h-32">
+        <ProgressRing
+          rounded={false}
+          width={44}
+          allowDecrease
+          progress={value}
+          color="steelblue"
+          bg="rgba(0,0,0,.045)"
+        />
+      </div>
+      <ProgressBar
+        height={2}
+        bg="rgba(0,0,0,0)"
+        color="red"
+        progress={value}
+        className="fixed top-0 inset-0"
+      />
+      <div className="**bg-slate-300 p-0 m-0 fixed right-0 inset-y-0">
+        <ProgressBarVertical
+          progress={value}
+        />
       </div>
     </>
   );

@@ -42,9 +42,9 @@ const ProgressBar = ({
   //
   bg = "lightgray",
   //
-  duration = 678,
+  duration = 892,
   //
-  round = false,
+  rounded = true,
   //
   // apply container classes; postion, etc.
   className = "",
@@ -91,7 +91,7 @@ const ProgressBar = ({
             }}
             stroke={color}
             strokeWidth={height}
-            strokeLinecap={true === round ? "round" : "butt"}
+            strokeLinecap={true === rounded ? "round" : "butt"}
             {...restSvgProps}
           />
         </motion.svg>

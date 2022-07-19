@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clamp, noop } from "../../src/util";
 //
+// @demo
 // https://codesandbox.io/s/musing-lalande-yxyp8d?file=/src/App.js
 const clampProgress = (progress) => clamp(progress, 0, 100);
 const ProgressRing = ({
@@ -32,13 +33,14 @@ const ProgressRing = ({
   //   right   90
   //   bottom  180
   //   left    270
-  //
   anchor = 0,
   //
   // stroke-line-cap
   //   butt | round [default]
-  //
   rounded = true,
+  //
+  // only allow increasing values
+  allowDecrease = false,
   //
   // run callback @animation-frame
   // pass interpolated progress value [0..100]
@@ -56,7 +58,9 @@ const ProgressRing = ({
   const r = 100 - width / 2;
   const strokeDasharray = Math.PI * 2 * r;
   const strokeDashoffset = strokeDasharray - (strokeDasharray * toValue) / 100;
+  //
   const dir = -1 !== direction ? 1 : -1;
+  const dur = duration / 1000;
   //
   const onUpdate = useCallback(
     ({ strokeDashoffset }) =>
@@ -65,7 +69,11 @@ const ProgressRing = ({
   );
   //
   useEffect(() => {
-    isActive && setToValue(clampProgress(progress));
+    if (isActive) {
+      if (progress < toValue && !allowDecrease) return;
+      //
+      setToValue(clampProgress(progress));
+    }
   }, [progress]);
   //
   return (
@@ -82,7 +90,7 @@ const ProgressRing = ({
           initial={{ opacity: 0 }}
           exit={{ opacity: 0, transition: { duration: 0.1 } }}
           animate={{ opacity: 1, transition: { duration: 0.2 } }}
-          className={`${className}`}
+          className={className}
         >
           {/*  */}
           {/* background */}
@@ -109,7 +117,7 @@ const ProgressRing = ({
             animate={{
               strokeDashoffset: dir * strokeDashoffset,
               transition: {
-                duration: duration / 1000,
+                duration: dur,
                 ease: "easeOut",
                 type: "tween",
               },
