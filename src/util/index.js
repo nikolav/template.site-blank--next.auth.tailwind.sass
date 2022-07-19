@@ -22,7 +22,7 @@ import sample from "lodash/sample";
 import shuffle from "lodash/shuffle";
 //
 const { add: addClass, rm: removeClass } = q.class;
-const { eventListener, prevent, ready, s: select, type } = q;
+const { eventListener, prevent, ready, s: select, type, on, off } = q;
 const { has } = q.object;
 const { isEmail } = q.test;
 // const { noop } = q.func;
@@ -55,7 +55,9 @@ export {
   nanoid,
   noop,
   now,
+  off,
   omit,
+  on,
   paste,
   pick,
   pickBy,
