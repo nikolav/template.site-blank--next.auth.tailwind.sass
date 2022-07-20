@@ -12,13 +12,13 @@ const EFFECT = {
     opacity: 1,
   },
   "hidden.bellow": {
-    y: "123%",
+    y: "122%",
     opacity: 0,
     scale: 1,
   },
   "hide.puff": {
     opacity: 0,
-    scale: 1.23,
+    scale: 1.22,
   },
 };
 
@@ -88,6 +88,7 @@ const Modal = ({
               ...EFFECT["hide.puff"],
               transition: {
                 ...transitionType,
+                // hide faster by 1.22
                 duration: duration / 1000 / 1.22,
               },
             }}

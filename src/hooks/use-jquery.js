@@ -1,19 +1,20 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import factoryJQuery from "../jquery/factory";
 import useStateSwitch from "./use-state-switch";
+import { useWindow } from "./use-window";
 //
 export const JQueryContext = createContext();
 export const useJQuery = () => useContext(JQueryContext);
 //
 export const JQueryProvider = ({ children }) => {
-  const isWindow = "undefined" !== typeof window;
+  const w$ = useWindow();
   const [jquery, setJQuery] = useState({ jQuery: null });
   const { isActive: isReady, toggle: toggleIsReady } = useStateSwitch();
   //
   useEffect(() => {
-    isWindow &&
-      setJQuery({ jQuery: factoryJQuery(new Function("return this")()) });
-  }, [isWindow]);
+    w$ && setJQuery({ jQuery: factoryJQuery(w$) });
+  }, [w$]);
+  //
   useEffect(() => {
     jquery.jQuery && jquery.jQuery(toggleIsReady.on);
   }, [jquery.jQuery]);
