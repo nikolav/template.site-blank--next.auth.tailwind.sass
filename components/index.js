@@ -5,6 +5,7 @@ import Details from "./Details/Details";
 import DrawerBox from "./DrawerBox/DrawerBox";
 import DrawerDrag from "./DrawerDrag/DrawerDrag";
 import Effect from "./Effect/Effect";
+import Modal from "./Modal/Modal";
 import OverlayHover from "./OverlayHover/OverlayHover";
 import Panel from "./Panel/Panel";
 import PortalOverlays from "./PortalOverlays";
@@ -23,6 +24,7 @@ export {
   DrawerBox,
   DrawerDrag,
   Effect,
+  Modal,
   OverlayHover,
   Panel,
   PortalOverlays,
