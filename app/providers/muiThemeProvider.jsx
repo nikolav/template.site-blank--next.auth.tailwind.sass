@@ -32,6 +32,7 @@ export default function MuiThemeProvider({ children }) {
     () => responsiveFontSizes(createTheme(getDesignTokens(mode))),
     [mode]
   );
+  // colorMode api
   const colorMode = {
     mode,
     theme,

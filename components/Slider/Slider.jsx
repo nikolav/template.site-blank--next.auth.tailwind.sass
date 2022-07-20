@@ -19,7 +19,7 @@ const Slider = ({
   // track rounded
   rounded = true,
   // thumb color
-  color = "currentcolor",
+  color = "steelblue",
   // track color
   bg = "lightgray",
   // transition duration

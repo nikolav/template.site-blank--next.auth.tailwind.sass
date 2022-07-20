@@ -1,6 +1,7 @@
 import Accordion from "./Accordion/Accordion";
 import BlockUI from "./BlockUI/BlockUI";
 import ChooseFile from "./ChooseFile/ChooseFile";
+import DarkModeToggle from "./DarkModeToggle/DarkModeToggle";
 import Details from "./Details/Details";
 import DrawerBox from "./DrawerBox/DrawerBox";
 import DrawerDrag from "./DrawerDrag/DrawerDrag";
@@ -20,6 +21,7 @@ export {
   Accordion,
   BlockUI,
   ChooseFile,
+  DarkModeToggle,
   Details,
   DrawerBox,
   DrawerDrag,

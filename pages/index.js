@@ -11,6 +11,7 @@ import {
   Slider,
   ProgressRing,
   Modal,
+  DarkModeToggle,
 } from "../components";
 import { useStateSwitch } from "../src/hooks";
 import { random } from "../src/util";
@@ -39,6 +40,7 @@ export default function Index() {
           </Link>
         </Toolbar>
       </div>
+      
       <Button
         onClick={() => {
           setValue(random(...values));
@@ -50,6 +52,7 @@ export default function Index() {
       <Button variant="outlined" onClick={toggle}>
         modal.toggle
       </Button>
+      <DarkModeToggle />
       <Modal isActive={isActive} onClose={toggle.off}>
         <div className="p-12">
           <p>

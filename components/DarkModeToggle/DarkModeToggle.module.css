@@ -1,0 +1,33 @@
+.modeCanvas {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+  opacity: 0.92;
+}
+.modeCanvasHover {
+  opacity: 1;
+}
+.modeCanvasDark {
+}
+
+.modeTrack {
+  transition: stroke 0.12s;
+}
+.modeTrackHover {
+}
+.modeTrackDark {
+  stroke: rgb(73, 73, 73);
+}
+
+.modeThumb {
+  transition: fill 0.12s;
+}
+.modeThumbHover {
+}
+.modeThumbActive {
+}
+.modeThumbDark {
+  fill: rgb(21, 21, 22);
+}

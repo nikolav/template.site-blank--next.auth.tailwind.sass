@@ -92,7 +92,7 @@ const Modal = ({
                 duration: duration / 1000 / 1.22,
               },
             }}
-            className={`fixed z-10 overflow-hidden bg-white rounded-0 inset-0 sm:shadow-md sm:rounded-2xl sm:inset-4 md:inset-6 md:inset-x-16 lg:inset-y-8 lg:inset-x-24 lg:mx-auto lg:tall:inset-y-20 max-w-4xl sm:max-h-[720px] ${modcss.modal}`}
+            className={`fixed z-10 overflow-hidden bg-white rounded-0 inset-0 sm:shadow-md sm:rounded-2xl sm:inset-4 md:inset-6 md:inset-x-16 lg:inset-y-8 lg:inset-x-24 lg:mx-auto lg:tall:inset-y-20 max-w-4xl sm:max-h-[720px] dark:bg-slate-800 ${modcss.modal}`}
             {...rest}
           >
             <MdClose onClick={onClose} className="icon-close" />

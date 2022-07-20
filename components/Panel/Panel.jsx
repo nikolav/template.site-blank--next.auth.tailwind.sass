@@ -39,7 +39,7 @@ const Panel = ({
         ref={setPopperElement}
         style={styles.popper}
         {...attributes.popper}
-        className="z-10 m-0 p-0"
+        className="z-[1] m-0 p-0"
       >
         {children}
       </div>
