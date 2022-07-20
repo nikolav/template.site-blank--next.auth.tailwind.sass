@@ -12,6 +12,7 @@ import {
   ProgressRing,
   Modal,
   DarkModeToggle,
+  Drag,
 } from "../components";
 import { useStateSwitch } from "../src/hooks";
 import { random } from "../src/util";
@@ -40,7 +41,7 @@ export default function Index() {
           </Link>
         </Toolbar>
       </div>
-      
+
       <Button
         onClick={() => {
           setValue(random(...values));
@@ -91,6 +92,23 @@ export default function Index() {
         progress={value}
         className="fixed top-0 inset-0"
       />
+      <Drag
+       className="fixed w-32 h-32 top-0 left-4 bg-red-200">
+        <div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <Drag.Handle>
+          <h2 className="font-bold">handle</h2>
+        </Drag.Handle>
+      </Drag>
+      <Drag className="fixed w-32 h-32 top-0 right-0 bg-blue-200">
+        <div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <Drag.Handle>
+          <h2 className="font-bold">handle</h2>
+        </Drag.Handle>
+      </Drag>
       <div className="**bg-slate-300 p-0 m-0 fixed right-0 inset-y-0">
         <ProgressBarVertical progress={value} />
       </div>

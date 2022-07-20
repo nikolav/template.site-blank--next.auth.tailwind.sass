@@ -2,12 +2,7 @@
 // https://github.com/jfriend00/docReady
 const ready_ = function (window, document) {
   "use strict";
-  // The public function name defaults to window.docReady
-  // but you can modify the last line of this function to pass in a different object or method name
-  // if you want to put them in a different namespace and those will be used instead of
-  // window.docReady(...)
-  //   funcName = funcName || "docReady";
-  //   baseObj = baseObj || window;
+  //
   var readyList = [];
   var readyFired = false;
   var readyEventHandlersInstalled = false;
@@ -81,7 +76,5 @@ const ready_ = function (window, document) {
   };
   //
 };
-// modify this previous line to pass in your own method name
-// and object for the method to be attached to
 
 export default ready_;
