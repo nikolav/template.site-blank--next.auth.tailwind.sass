@@ -20,9 +20,9 @@ const ProgressBarVertical = ({
   // track rounded
   rounded = true,
   // thumb color
-  color = "currentcolor",
+  color = "steelblue",
   // track color
-  bg = "silver",
+  bg = "lightgray",
   // transition duration
   duration = 567,
   // spring | tween
