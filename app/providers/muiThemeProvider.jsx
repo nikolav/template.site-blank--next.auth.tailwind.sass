@@ -16,7 +16,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 //
 import { themePrimary } from "../theme/mui-primary";
 import { themeDark } from "../theme/mui-dark";
-import { useColorModeTW } from "../store";
+import { useColorModeTW, MODE_DARK as MODE_DARK_TW } from "../store";
 
 ////
 //
@@ -32,27 +32,34 @@ export default function MuiThemeProvider({ children }) {
     () => responsiveFontSizes(createTheme(getDesignTokens(mode))),
     [mode]
   );
+  const setModeDark_ = () => setMode("dark");
   // colorMode api
   const colorMode = {
     mode,
     theme,
-    // 
+    //
     isDark: () => "dark" === mode,
     isLight: () => "light" === mode,
-    setColorModeDark: () => setMode("dark"),
+    setColorModeDark: setModeDark_,
     setColorModeLight: () => setMode("light"),
     toggleColorMode: () => setMode((m) => ("dark" === m ? "light" : "dark")),
   };
   //
-  // update tailwind theme
-  const modeTW = useColorModeTW();
+  // sync tailwind theme @change.mui
+  const cm_tw = useColorModeTW();
   useEffect(() => {
     if ("dark" === mode) {
-      modeTW.setColorModeDark();
+      cm_tw.setColorModeDark();
       return;
     }
-    modeTW.setColorModeLight();
+    cm_tw.setColorModeLight();
   }, [mode]);
+  ///
+  // sync mui theme @changes.tw
+  const modeTW = cm_tw();
+  useEffect(() => {
+    if (MODE_DARK_TW === modeTW) setModeDark_();
+  }, [modeTW]);
   //
   return (
     <ThemeProvider theme={theme}>

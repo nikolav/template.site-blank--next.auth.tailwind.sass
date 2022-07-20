@@ -10,6 +10,7 @@ import {
   // AuthApiProvider,
   AppEventsProvider,
   JQueryProvider,
+  WindowDocumentProvider,
 } from "../app/providers";
 //
 import { Provider as ReduxStoreProvider } from "react-redux";
@@ -73,74 +74,76 @@ function App({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AppEventsProvider>
-        <ReduxStoreProvider store={store}>
-          <QueryProvider>
-            {/* <SessionProvider
+      <WindowDocumentProvider>
+        <AppEventsProvider>
+          <ReduxStoreProvider store={store}>
+            <QueryProvider>
+              {/* <SessionProvider
         session={session}
         refetchInterval={0}
         refetchOnWindowFocus={true}
       > */}
-            {/* <ResourceMainProvider> */}
-            {/* <AuthApiProvider> */}
-            <AuthSessionProvider>
-              {/* <GravatarsProvider> */}
-              <MuiThemeProvider>
-                {/* mui css reset */}
-                <CssBaseline />
-                {/*  */}
-                <JQueryProvider>
+              {/* <ResourceMainProvider> */}
+              {/* <AuthApiProvider> */}
+              <AuthSessionProvider>
+                {/* <GravatarsProvider> */}
+                <MuiThemeProvider>
+                  {/* mui css reset */}
+                  <CssBaseline />
                   {/*  */}
-                  {/* toasts */}
-                  {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
-                  <PortalOverlays>
-                    <ToastContainer
-                      autoClose={4567}
-                      closeOnClick
-                      draggable
-                      hideProgressBar
-                      limit={3}
-                      newestOnTop={false}
-                      pauseOnFocusLoss
-                      pauseOnHover
-                      // top-right, top-center, top-left,
-                      // bottom-right, bottom-center, bottom-left
-                      //   @toast.POSITION
-                      position="top-right"
-                      rtl={false}
-                      //
-                      // closeButton
-                      // icon={false}
-                      // theme=light|dark|colored
-                    />
-                  </PortalOverlays>
-                  <AnimatePresence exitBeforeEnter initial={false}>
-                    <motion.div
-                      key={route}
-                      initial="out"
-                      animate="in"
-                      exit="out"
-                      variants={pageVariantsMotion}
-                    >
-                      {/*  */}
-                      {/* page content */}
-                      <Component {...pageProps} />
-                    </motion.div>
-                  </AnimatePresence>
-                  {/*  */}
-                  {/* flags app-processing status */}
-                  <LoaderBars />
-                  {/*  */}
-                </JQueryProvider>
-              </MuiThemeProvider>
-              {/* </GravatarsProvider> */}
-            </AuthSessionProvider>
-            {/* </AuthApiProvider> */}
-            {/* </ResourceMainProvider> */}
-            {/* </SessionProvider> */}
-          </QueryProvider>
-        </ReduxStoreProvider>
-      </AppEventsProvider>
+                  <JQueryProvider>
+                    {/*  */}
+                    {/* toasts */}
+                    {/* https://fkhadra.github.io/react-toastify/api/toast-container */}
+                    <PortalOverlays>
+                      <ToastContainer
+                        autoClose={4567}
+                        closeOnClick
+                        draggable
+                        hideProgressBar
+                        limit={3}
+                        newestOnTop={false}
+                        pauseOnFocusLoss
+                        pauseOnHover
+                        // top-right, top-center, top-left,
+                        // bottom-right, bottom-center, bottom-left
+                        //   @toast.POSITION
+                        position="top-right"
+                        rtl={false}
+                        //
+                        // closeButton
+                        // icon={false}
+                        // theme=light|dark|colored
+                      />
+                    </PortalOverlays>
+                    <AnimatePresence exitBeforeEnter initial={false}>
+                      <motion.div
+                        key={route}
+                        initial="out"
+                        animate="in"
+                        exit="out"
+                        variants={pageVariantsMotion}
+                      >
+                        {/*  */}
+                        {/* page content */}
+                        <Component {...pageProps} />
+                      </motion.div>
+                    </AnimatePresence>
+                    {/*  */}
+                    {/* flags app-processing status */}
+                    <LoaderBars />
+                    {/*  */}
+                  </JQueryProvider>
+                </MuiThemeProvider>
+                {/* </GravatarsProvider> */}
+              </AuthSessionProvider>
+              {/* </AuthApiProvider> */}
+              {/* </ResourceMainProvider> */}
+              {/* </SessionProvider> */}
+            </QueryProvider>
+          </ReduxStoreProvider>
+        </AppEventsProvider>
+      </WindowDocumentProvider>
     </>
   );
 }
