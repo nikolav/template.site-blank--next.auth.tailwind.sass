@@ -1016,6 +1016,10 @@ select {
   height: 100%;
 }
 
+.max-h-\[720px\] {
+  max-height: 720px;
+}
+
 .w-screen {
   width: 100vw;
 }
@@ -1422,6 +1426,13 @@ select {
     left: 1rem;
   }
 
+  .sm\:inset-6 {
+    top: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
   .sm\:mx-\[4px\] {
     margin-left: 4px;
     margin-right: 4px;
@@ -1481,6 +1492,10 @@ select {
     right: 4rem;
   }
 
+  .md\:max-h-\[720px\] {
+    max-height: 720px;
+  }
+
   .md\:w-2\/3 {
     width: 66.666667%;
   }
@@ -1502,10 +1517,33 @@ select {
     margin-right: auto;
   }
 
+  .lg\:max-h-\[720px\] {
+    max-height: 720px;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
   }
 
+
+@media (min-height: 792px) {
+  .tall\:inset-y-32 {
+    top: 8rem;
+    bottom: 8rem;
+  }
+
+  .tall\:inset-y-24 {
+    top: 6rem;
+    bottom: 6rem;
+  }
+
+  .tall\:inset-y-20 {
+    top: 5rem;
+    bottom: 5rem;
+  }
+}
+
+@media (min-width: 968px) {
   @media (min-height: 792px) {
     .lg\:tall\:inset-y-20 {
       top: 5rem;
